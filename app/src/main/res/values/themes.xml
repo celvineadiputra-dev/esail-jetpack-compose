@@ -7,7 +7,7 @@
 
     <style name="Theme.ESail.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/DodgerBlue</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/sailboat</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/esail</item>
         <item name="postSplashScreenTheme">@style/Theme.ESail</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
     </style>

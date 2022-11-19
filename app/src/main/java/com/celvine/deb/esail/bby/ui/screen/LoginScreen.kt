@@ -51,23 +51,23 @@ fun LoginScreen() {
                     text = "Forgot Password",
                     style = MaterialTheme.typography.subtitle1.copy(
                         fontSize = 15.sp,
-                        color = SoftGray
+                        color = SoftGray2
                     )
                 )
             }
         }
 
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         PrimaryButton(text = "Login", onClick = {})
 
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Text(
                 text = "Signin with Google or Facebook",
-                style = MaterialTheme.typography.subtitle2.copy(color = SoftGray)
+                style = MaterialTheme.typography.subtitle2.copy(color = SoftGray2)
             )
         }
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Row(modifier = Modifier.fillMaxWidth()) {
             Row(
                 modifier = Modifier
@@ -117,7 +117,7 @@ fun LoginScreen() {
         ) {
             Text(
                 text = "Don't have an account ?",
-                style = MaterialTheme.typography.subtitle1.copy(color = SoftGray)
+                style = MaterialTheme.typography.subtitle1.copy(color = SoftGray2)
             )
             Spacer(modifier = Modifier.width(5.dp))
             TextButton(onClick = { /*TODO*/ }) {
@@ -146,8 +146,8 @@ fun WelcomeText() {
         )
         Spacer(modifier = Modifier.height(7.dp))
         Text(
-            text = "We happy to you again, To use your account, your should login first",
-            style = MaterialTheme.typography.subtitle1.copy(color = SoftGray)
+            text = "We happy to see you again, To use your account, your should login first",
+            style = MaterialTheme.typography.subtitle1.copy(color = SoftGray2)
         )
     }
 }

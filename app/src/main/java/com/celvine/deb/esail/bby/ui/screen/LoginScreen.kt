@@ -1,8 +1,6 @@
 package com.celvine.deb.esail.bby.ui.screen
 
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -27,7 +25,7 @@ fun LoginScreen() {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
-            .scrollable(state = scrollState, orientation = Orientation.Vertical)
+            .verticalScroll(scrollState)
             .padding(16.dp)
     ) {
         WelcomeText()

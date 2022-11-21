@@ -66,7 +66,13 @@ fun LoginScreen(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.height(5.dp))
-        PrimaryButton(text = "Login", onClick = {})
+        PrimaryButton(text = "Login", onClick = {
+            navController.navigate(Routes.Dashboard.routes) {
+                popUpTo(Routes.Login.routes) {
+                    inclusive = true
+                }
+            }
+        })
 
         Spacer(modifier = Modifier.height(20.dp))
 

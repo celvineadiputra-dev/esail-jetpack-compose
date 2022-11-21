@@ -12,6 +12,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.screen.LoginScreen
+import com.celvine.deb.esail.bby.ui.screen.RegisterScreen
 
 @Composable
 fun StartSail(
@@ -24,7 +25,10 @@ fun StartSail(
     Scaffold() {
         NavHost(navController = navController, startDestination = Routes.Login.routes) {
             composable(Routes.Login.routes) {
-                LoginScreen()
+                LoginScreen(navController = navController)
+            }
+            composable(Routes.Register.routes) {
+                RegisterScreen(navController = navController)
             }
         }
     }

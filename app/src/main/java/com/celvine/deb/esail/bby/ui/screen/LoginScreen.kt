@@ -8,21 +8,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.celvine.deb.esail.bby.R
-import com.celvine.deb.esail.bby.ui.components.PasswordTextField
-import com.celvine.deb.esail.bby.ui.components.PrimaryButton
-import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
+import androidx.navigation.NavController
+import com.celvine.deb.esail.bby.route.Routes
+import com.celvine.deb.esail.bby.ui.components.*
 import com.celvine.deb.esail.bby.ui.theme.*
 import kotlin.reflect.KFunction1
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     val scrollState = rememberScrollState()
+    val authType = remember {
+        mutableStateOf("email")
+    }
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
@@ -30,12 +32,18 @@ fun LoginScreen() {
     ) {
         WelcomeText()
         Spacer(modifier = Modifier.height(20.dp))
-        Tabby()
+        Tabby(authType = authType)
 
         Spacer(modifier = Modifier.height(40.dp))
-        Text(text = "Email", style = MaterialTheme.typography.subtitle1.copy(fontSize = 15.sp))
+        Text(
+            text = if (authType.value == "email") "Email" else "Phone Number",
+            style = MaterialTheme.typography.subtitle1.copy(fontSize = 15.sp)
+        )
         Spacer(modifier = Modifier.height(3.dp))
-        PrimaryTextField(placeholder = "Enter your email address")
+        PrimaryTextField(
+            placeholder = if (authType.value == "email") "Enter your email address" else "Enter phone number",
+            keyboardType = if (authType.value == "email") KeyboardType.Email else KeyboardType.Phone
+        )
 
         Spacer(modifier = Modifier.height(15.dp))
         Text(text = "Password", style = MaterialTheme.typography.subtitle1.copy(fontSize = 15.sp))
@@ -61,54 +69,9 @@ fun LoginScreen() {
         PrimaryButton(text = "Login", onClick = {})
 
         Spacer(modifier = Modifier.height(20.dp))
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(
-                text = "Signin with Google or Facebook",
-                style = MaterialTheme.typography.subtitle2.copy(color = SoftGray2)
-            )
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Row(
-                modifier = Modifier
-                    .border(width = 2.dp, color = SoftGray, shape = RoundedCornerShape(12.dp))
-                    .padding(vertical = 20.dp, horizontal = 10.dp)
-                    .weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.google),
-                    contentDescription = "Google Icon",
-                    modifier = Modifier
-                        .width(24.dp)
-                        .height(24.dp)
-                )
-                Spacer(modifier = Modifier.width(7.dp))
-                Text(text = "Google", style = MaterialTheme.typography.button)
-            }
 
-            Spacer(modifier = Modifier.width(5.dp))
+        AuthSocial()
 
-            Row(
-                modifier = Modifier
-                    .border(width = 2.dp, color = SoftGray, shape = RoundedCornerShape(12.dp))
-                    .padding(vertical = 20.dp, horizontal = 10.dp)
-                    .weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.facebook),
-                    contentDescription = "Facebook Icon",
-                    modifier = Modifier
-                        .width(24.dp)
-                        .height(24.dp)
-                )
-                Spacer(modifier = Modifier.width(7.dp))
-                Text(text = "Facebook", style = MaterialTheme.typography.button)
-            }
-        }
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -120,7 +83,13 @@ fun LoginScreen() {
                 style = MaterialTheme.typography.subtitle1.copy(color = SoftGray2)
             )
             Spacer(modifier = Modifier.width(5.dp))
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(onClick = {
+                navController.navigate(Routes.Register.routes) {
+                    popUpTo(Routes.Login.routes) {
+                        inclusive = true
+                    }
+                }
+            }) {
                 Text(
                     text = "Sign Up",
                     style = MaterialTheme.typography.button.copy(
@@ -153,13 +122,19 @@ fun WelcomeText() {
 }
 
 @Composable
-fun Tabby() {
+fun Tabby(authType: MutableState<String>) {
     var currentActive by remember {
         mutableStateOf(0)
     }
 
     fun setCurrentActive(index: Int) {
         currentActive = index
+
+        if (index == 1) {
+            authType.value = "phone"
+        } else {
+            authType.value = "email"
+        }
     }
     Card(
         modifier = Modifier

@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.celvine.deb.esail.bby.route.Routes
+import com.celvine.deb.esail.bby.ui.components.BottomNavigationBar
 import com.celvine.deb.esail.bby.ui.screen.DashboardScreen
 import com.celvine.deb.esail.bby.ui.screen.LoginScreen
 import com.celvine.deb.esail.bby.ui.screen.RegisterScreen

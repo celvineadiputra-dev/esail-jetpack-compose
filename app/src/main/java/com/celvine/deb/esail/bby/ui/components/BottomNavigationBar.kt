@@ -1,11 +1,15 @@
 package com.celvine.deb.esail.bby.ui.components
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.celvine.deb.esail.bby.route.NavigationItem
@@ -17,8 +21,8 @@ import com.celvine.deb.esail.bby.ui.theme.White
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Home,
-        NavigationItem.Mentor,
-        NavigationItem.Course,
+        NavigationItem.Sail,
+        NavigationItem.Wishlist,
         NavigationItem.Profile,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -40,7 +44,7 @@ fun BottomNavigationBar(navController: NavController) {
                     }
                 },
                 icon = {
-                    Icon(painter = painterResource(id = item.icon), contentDescription = item.title)
+                    Icon(modifier = Modifier.width(18.dp).height(20.dp),painter = painterResource(id = item.icon), contentDescription = item.title)
                 },
                 label = null,
                 alwaysShowLabel = false,

@@ -32,7 +32,11 @@ fun CourseCategory() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Course Category", style = MaterialTheme.typography.h6.copy(fontSize = 16.sp)
+                text = "Course Category",
+                style = MaterialTheme.typography.h6.copy(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
             )
             Icon(painter = painterResource(id = R.drawable.more_icon), contentDescription = "more")
         }

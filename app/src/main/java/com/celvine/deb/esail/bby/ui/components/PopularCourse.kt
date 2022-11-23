@@ -6,30 +6,23 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material.icons.outlined.StarHalf
-import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -38,8 +31,6 @@ import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.data.CourseData
 import com.celvine.deb.esail.bby.models.CourseModel
 import com.celvine.deb.esail.bby.ui.theme.*
-import java.lang.Math.ceil
-import java.lang.Math.floor
 
 
 @Composable
@@ -52,7 +43,10 @@ fun PopularCourse() {
         ) {
             Text(
                 text = "Popular Courses",
-                style = MaterialTheme.typography.h6.copy(fontSize = 16.sp)
+                style = MaterialTheme.typography.h6.copy(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
             )
             Icon(painter = painterResource(id = R.drawable.more_icon), contentDescription = "more")
         }
@@ -61,8 +55,10 @@ fun PopularCourse() {
             BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
                 LazyRow(modifier = Modifier.fillMaxWidth(), state = rememberLazyListState()) {
                     items(CourseData.data, key = { it.id }) { item ->
-                        CardCourse(item = item)
-                        Spacer(modifier = Modifier.width(10.dp))
+                        if (item.isPopular) {
+                            CardCourse(item = item)
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
                     }
                 }
             }
@@ -99,7 +95,7 @@ fun CardCourse(item: CourseModel) {
             Text(
                 text = item.title,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 2,
+                maxLines = 1,
                 style = MaterialTheme.typography.h6.copy(
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold
@@ -112,24 +108,7 @@ fun CardCourse(item: CourseModel) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Price(price = item.price, isFree = item.isFree)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        modifier = Modifier.width(15.dp),
-                        painter = painterResource(id = R.drawable.star_icon),
-                        contentDescription = "Star",
-                        tint = MaximumYellowRed
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = item.rating,
-                        style = MaterialTheme.typography.subtitle1.copy(
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = SoftGray2,
-                            lineHeight = 0.sp
-                        )
-                    )
-                }
+                Star(rating = item.rating)
             }
             Spacer(modifier = Modifier.height(10.dp))
             Text(
@@ -141,6 +120,8 @@ fun CardCourse(item: CourseModel) {
                     fontWeight = FontWeight.Normal, color = SoftGray2
                 )
             )
+            Spacer(modifier = Modifier.height(5.dp))
+            Mentor(mentor = item.mentor)
             Spacer(modifier = Modifier.height(5.dp))
             Button(shape = RoundedCornerShape(12.dp),
                 elevation = ButtonDefaults.elevation(0.dp), onClick = { /*TODO*/ }) {

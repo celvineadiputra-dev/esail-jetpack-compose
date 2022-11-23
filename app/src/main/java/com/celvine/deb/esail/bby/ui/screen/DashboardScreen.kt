@@ -30,18 +30,24 @@ fun DashboardScreen(navController: NavController) {
         Column(
             modifier = Modifier
                 .verticalScroll(scrollState)
-                .padding(16.dp)
         ) {
-            GreetingBar()
-            Spacer(modifier = Modifier.height(15.dp))
-            SearchField("Jetpack Compose Beginner", searchText)
-            Spacer(modifier = Modifier.height(15.dp))
-            BannerDiscount()
-            Spacer(modifier = Modifier.height(15.dp))
-            CourseCategory()
-            Spacer(modifier = Modifier.height(20.dp))
-            PopularCourse()
-            Spacer(modifier = Modifier.height(100.dp))
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+            ) {
+                GreetingBar()
+                Spacer(modifier = Modifier.height(15.dp))
+                SearchField("Jetpack Compose Beginner", searchText)
+                Spacer(modifier = Modifier.height(15.dp))
+                BannerDiscount()
+                Spacer(modifier = Modifier.height(15.dp))
+                CourseCategory()
+            }
+            Column(modifier = Modifier.padding(start = 16.dp, end = 0.dp)) {
+                Spacer(modifier = Modifier.height(20.dp))
+                PopularCourse()
+                Spacer(modifier = Modifier.height(80.dp))
+            }
         }
     }
 }

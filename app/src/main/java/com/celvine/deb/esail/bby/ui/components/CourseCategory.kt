@@ -1,6 +1,7 @@
 package com.celvine.deb.esail.bby.ui.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -10,8 +11,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -29,23 +32,30 @@ fun CourseCategory() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Course Category",
-                style = MaterialTheme.typography.h6.copy(fontSize = 16.sp)
+                text = "Course Category", style = MaterialTheme.typography.h6.copy(fontSize = 16.sp)
             )
             Icon(painter = painterResource(id = R.drawable.more_icon), contentDescription = "more")
         }
         Spacer(modifier = Modifier.height(10.dp))
-        LazyRow(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             items(CategoryCourseData.data, key = { it.id }) { item ->
-                ItemCategory(icon = item.icon, label = item.label)
+                ItemCategory(icon = item.icon, label = item.label, color = item.color)
             }
         }
     }
 }
 
 @Composable
-fun ItemCategory(icon: Int, label: String) {
-    Column(modifier = Modifier.clickable { }, horizontalAlignment = Alignment.CenterHorizontally) {
+fun ItemCategory(icon: Int, label: String, color: Color) {
+    val interactionSource = remember { MutableInteractionSource() }
+    Column(
+        modifier = Modifier.clickable(
+            interactionSource = interactionSource,
+            indication = null
+        ) { }, horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Card(shape = RoundedCornerShape(percent = 100)) {
             Icon(
                 modifier = Modifier
@@ -53,15 +63,14 @@ fun ItemCategory(icon: Int, label: String) {
                     .width(25.dp)
                     .height(25.dp),
                 painter = painterResource(id = icon),
-                contentDescription = ""
+                contentDescription = "",
+                tint = color
             )
         }
         Spacer(modifier = Modifier.height(7.dp))
         Text(
-            text = label,
-            style = MaterialTheme.typography.subtitle1.copy(
-                color = Dark,
-                fontWeight = FontWeight.SemiBold
+            text = label, style = MaterialTheme.typography.subtitle1.copy(
+                color = Dark, fontWeight = FontWeight.SemiBold, fontSize = 12.sp
             )
         )
     }

@@ -5,9 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
@@ -25,15 +28,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
-import com.celvine.deb.esail.bby.ui.theme.HonoluluBlue
-import com.celvine.deb.esail.bby.ui.theme.SoftGray
-import com.celvine.deb.esail.bby.ui.theme.SoftGray2
-import com.celvine.deb.esail.bby.ui.theme.White
+import com.celvine.deb.esail.bby.data.CourseData
+import com.celvine.deb.esail.bby.models.CourseModel
+import com.celvine.deb.esail.bby.ui.theme.*
 import java.lang.Math.ceil
 import java.lang.Math.floor
 
@@ -53,12 +57,11 @@ fun PopularCourse() {
             Icon(painter = painterResource(id = R.drawable.more_icon), contentDescription = "more")
         }
         Spacer(modifier = Modifier.height(20.dp))
-        val items = (1..10).map { "item $it" }
         Box(modifier = Modifier.fillMaxWidth()) {
             BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
                 LazyRow(modifier = Modifier.fillMaxWidth(), state = rememberLazyListState()) {
-                    itemsIndexed(items) { index, item ->
-                        CardCourse()
+                    items(CourseData.data, key = { it.id }) { item ->
+                        CardCourse(item = item)
                         Spacer(modifier = Modifier.width(10.dp))
                     }
                 }
@@ -69,7 +72,7 @@ fun PopularCourse() {
 
 
 @Composable
-fun CardCourse() {
+fun CardCourse(item: CourseModel) {
     Box(
         modifier = Modifier
             .width(280.dp)
@@ -81,9 +84,9 @@ fun CardCourse() {
         Column {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://developer.android.com/static/codelabs/jetpack-compose-animation/img/5bb2e531a22c7de0.png?hl=id")
+                    .data(item.banner)
                     .crossfade(true).build(),
-                contentDescription = "ex",
+                contentDescription = item.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -92,77 +95,87 @@ fun CardCourse() {
                         shape = RoundedCornerShape(12.dp)
                     )
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "This is heading",
+                text = item.title,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 2,
                 style = MaterialTheme.typography.h6.copy(
-                    fontSize = 20.sp,
+                    fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                RatingBar(rating = 2.5)
-                Spacer(modifier = Modifier.width(5.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Price(price = item.price, isFree = item.isFree)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        modifier = Modifier.width(15.dp),
+                        painter = painterResource(id = R.drawable.star_icon),
+                        contentDescription = "Star",
+                        tint = MaximumYellowRed
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = item.rating,
+                        style = MaterialTheme.typography.subtitle1.copy(
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = SoftGray2,
+                            lineHeight = 0.sp
+                        )
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = item.sortDesc,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 2,
+                style = MaterialTheme.typography.subtitle2.copy(
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Normal, color = SoftGray2
+                )
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            Button(shape = RoundedCornerShape(12.dp),
+                elevation = ButtonDefaults.elevation(0.dp), onClick = { /*TODO*/ }) {
                 Text(
-                    text = "2.5 (203)",
-                    style = MaterialTheme.typography.subtitle1.copy(
+                    text = "Join Now",
+                    style = MaterialTheme.typography.button.copy(
+                        color = White,
                         fontSize = 11.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = SoftGray
+                        fontWeight = FontWeight.SemiBold
                     )
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "lorem ipsum dolor si amet, conscteur abad adapscing, more",
-                style = MaterialTheme.typography.subtitle2.copy(
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal, color = SoftGray
-                )
-            )
         }
     }
 }
 
 @Composable
-fun RatingBar(
-    modifier: Modifier = Modifier,
-    rating: Double = 0.0,
-    stars: Int = 5,
-    starsColor: Color = HonoluluBlue,
-) {
-
-    val filledStars = kotlin.math.floor(rating).toInt()
-    val unfilledStars = (stars - kotlin.math.ceil(rating)).toInt()
-    val halfStar = !(rating.rem(1).equals(0.0))
-
-    Row(modifier = modifier) {
-        repeat(filledStars) {
-            Icon(
-                modifier = Modifier.width(15.dp),
-                imageVector = Icons.Outlined.Star,
-                contentDescription = null,
-                tint = starsColor
+fun Price(isFree: Boolean = false, price: String = "0") {
+    if (isFree) {
+        Text(
+            text = "Free",
+            style = MaterialTheme.typography.subtitle2.copy(
+                color = Ruby,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 12.sp,
             )
-        }
-
-        if (halfStar) {
-            Icon(
-                modifier = Modifier.width(15.dp),
-                imageVector = Icons.Outlined.StarHalf,
-                contentDescription = null,
-                tint = starsColor
+        )
+    } else {
+        Text(
+            text = "Rp. $price",
+            style = MaterialTheme.typography.subtitle2.copy(
+                color = Green,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 12.sp
             )
-        }
-
-        repeat(unfilledStars) {
-            Icon(
-                modifier = Modifier.width(15.dp),
-                imageVector = Icons.Outlined.StarOutline,
-                contentDescription = null,
-                tint = SoftGray
-            )
-        }
+        )
     }
 }

@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.ui.components.*
 import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
+import com.celvine.deb.esail.bby.ui.theme.IceBlue
+import com.celvine.deb.esail.bby.ui.theme.White2
 
 @Composable
 fun DashboardScreen(navController: NavController) {
@@ -26,7 +28,9 @@ fun DashboardScreen(navController: NavController) {
     Scaffold(bottomBar = { BottomNavigationBar(navController) }) { paddingValues ->
         val padding = paddingValues
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = White2)
         ) {
             item {
                 Column(

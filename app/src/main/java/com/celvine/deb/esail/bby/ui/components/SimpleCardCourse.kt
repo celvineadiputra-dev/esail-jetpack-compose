@@ -1,5 +1,6 @@
 package com.celvine.deb.esail.bby.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -28,7 +29,8 @@ import com.celvine.deb.esail.bby.ui.theme.White
 fun SimpleCardCourse(item: CourseModel) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { },
         elevation = CardDefaults.cardElevation(defaultElevation = 0.4.dp),
         colors = CardDefaults.cardColors(containerColor = White)
     ) {
@@ -65,6 +67,8 @@ fun SimpleCardCourse(item: CourseModel) {
                     Mentor(mentor = item.mentor)
                     Star(rating = item.rating)
                 }
+                Spacer(modifier = Modifier.height(5.dp))
+                Price(isFree = item.isFree, price = item.price)
             }
         }
     }

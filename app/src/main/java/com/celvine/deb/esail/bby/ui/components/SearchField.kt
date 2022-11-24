@@ -15,6 +15,7 @@ import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
 import com.celvine.deb.esail.bby.ui.theme.SoftGray
 import com.celvine.deb.esail.bby.ui.theme.Transparant
+import com.celvine.deb.esail.bby.ui.theme.White
 
 @Composable
 fun SearchField(placeholder: String, value: MutableState<String>) {
@@ -24,9 +25,9 @@ fun SearchField(placeholder: String, value: MutableState<String>) {
             .height(63.dp),
         value = value.value,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = SoftGray,
-            unfocusedBorderColor = SoftGray,
-            focusedBorderColor = Transparant,
+            backgroundColor = White,
+            unfocusedBorderColor = White,
+            focusedBorderColor = SoftGray,
             cursorColor = DodgerBlue
         ),
         shape = RoundedCornerShape(12.dp),

@@ -37,8 +37,10 @@ fun FlashSale() {
         }
         Spacer(modifier = Modifier.height(10.dp))
         CourseData.data.forEachIndexed { _, item ->
-            SimpleCardCourse(item = item)
-            Spacer(modifier = Modifier.height(10.dp))
+            if(item.isFlashSale){
+                SimpleCardCourse(item = item)
+                Spacer(modifier = Modifier.height(10.dp))
+            }
         }
     }
 }

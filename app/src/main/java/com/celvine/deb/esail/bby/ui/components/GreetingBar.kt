@@ -27,7 +27,7 @@ fun GreetingBar() {
     ) {
         Column {
             Text(
-                text = "Debby Falensya",
+                text = "Hello, 👋 Claudie Natalija",
                 style = MaterialTheme.typography.h6.copy(fontSize = 16.sp)
             )
             Text(

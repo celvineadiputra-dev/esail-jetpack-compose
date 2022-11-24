@@ -1,10 +1,6 @@
 package com.celvine.deb.esail.bby.ui.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -37,7 +33,7 @@ fun FlashSale() {
         }
         Spacer(modifier = Modifier.height(10.dp))
         CourseData.data.forEachIndexed { _, item ->
-            if(item.isFlashSale){
+            if (item.isFlashSale) {
                 SimpleCardCourse(item = item)
                 Spacer(modifier = Modifier.height(10.dp))
             }

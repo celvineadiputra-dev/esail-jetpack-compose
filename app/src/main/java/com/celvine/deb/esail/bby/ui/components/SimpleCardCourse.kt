@@ -4,9 +4,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +49,7 @@ fun SimpleCardCourse(item: CourseModel) {
                     )
             )
             Spacer(modifier = Modifier.width(15.dp))
-            Column() {
+            Column {
                 Text(
                     text = item.title,
                     overflow = TextOverflow.Ellipsis,

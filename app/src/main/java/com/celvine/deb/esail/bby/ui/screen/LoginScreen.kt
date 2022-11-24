@@ -1,8 +1,10 @@
 package com.celvine.deb.esail.bby.ui.screen
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -15,7 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.route.Routes
-import com.celvine.deb.esail.bby.ui.components.*
+import com.celvine.deb.esail.bby.ui.components.AuthSocial
+import com.celvine.deb.esail.bby.ui.components.PasswordTextField
+import com.celvine.deb.esail.bby.ui.components.PrimaryButton
+import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
 import com.celvine.deb.esail.bby.ui.theme.*
 import kotlin.reflect.KFunction1
 

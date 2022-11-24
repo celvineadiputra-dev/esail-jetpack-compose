@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -12,9 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.*
-import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
-import com.celvine.deb.esail.bby.ui.theme.IceBlue
 import com.celvine.deb.esail.bby.ui.theme.White2
 
 @Composable
@@ -39,7 +37,13 @@ fun DashboardScreen(navController: NavController) {
                 ) {
                     GreetingBar()
                     Spacer(modifier = Modifier.height(15.dp))
-                    SearchField("Jetpack Compose Beginner", searchText)
+                    SearchField("Jetpack Compose Beginner", searchText, enable = false, onClick = {
+                        navController.navigate(Routes.Search.routes) {
+                            popUpTo(Routes.Search.routes) {
+                                inclusive = true
+                            }
+                        }
+                    })
                     Spacer(modifier = Modifier.height(15.dp))
                     BannerDiscount()
                     Spacer(modifier = Modifier.height(15.dp))

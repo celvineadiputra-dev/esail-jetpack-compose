@@ -44,7 +44,13 @@ fun BottomNavigationBar(navController: NavController) {
                     }
                 },
                 icon = {
-                    Icon(modifier = Modifier.width(18.dp).height(20.dp),painter = painterResource(id = item.icon), contentDescription = item.title)
+                    Icon(
+                        modifier = Modifier
+                            .width(18.dp)
+                            .height(20.dp),
+                        painter = painterResource(id = item.icon),
+                        contentDescription = item.title
+                    )
                 },
                 label = null,
                 alwaysShowLabel = false,

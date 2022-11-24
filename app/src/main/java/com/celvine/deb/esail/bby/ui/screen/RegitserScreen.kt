@@ -1,10 +1,12 @@
 package com.celvine.deb.esail.bby.ui.screen
 
-import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.TextButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -12,8 +14,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.route.Routes
-import com.celvine.deb.esail.bby.ui.components.*
-import com.celvine.deb.esail.bby.ui.theme.*
+import com.celvine.deb.esail.bby.ui.components.AuthSocial
+import com.celvine.deb.esail.bby.ui.components.PasswordTextField
+import com.celvine.deb.esail.bby.ui.components.PrimaryButton
+import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
+import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
+import com.celvine.deb.esail.bby.ui.theme.SoftGray2
 
 @Composable
 fun RegisterScreen(navController: NavController) {

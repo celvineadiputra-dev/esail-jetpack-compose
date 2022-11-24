@@ -36,10 +36,12 @@ fun GreetingBar() {
             )
         }
         Image(
-            modifier = Modifier.width(24.dp).clickable(
-                interactionSource = interactionSource,
-                indication = null
-            ) { },
+            modifier = Modifier
+                .width(24.dp)
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null
+                ) { },
             painter = painterResource(id = R.drawable.bell_icon),
             contentDescription = "Notification",
         )

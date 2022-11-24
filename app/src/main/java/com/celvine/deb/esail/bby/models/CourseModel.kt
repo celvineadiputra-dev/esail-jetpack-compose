@@ -8,9 +8,9 @@ data class CourseModel(
     val isFree: Boolean = false,
     val price: String = "0",
     val banner: String,
-    val rating : String,
-    val mentor : String,
-    val category : String,
-    val isFlashSale : Boolean = false,
-    val isPopular : Boolean = false
+    val rating: String,
+    val mentor: String,
+    val category: String,
+    val isFlashSale: Boolean = false,
+    val isPopular: Boolean = false
 )

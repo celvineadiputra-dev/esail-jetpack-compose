@@ -14,7 +14,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
-import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
 import com.celvine.deb.esail.bby.ui.theme.HonoluluBlue
 import com.celvine.deb.esail.bby.ui.theme.White
 

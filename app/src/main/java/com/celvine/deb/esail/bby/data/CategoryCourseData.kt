@@ -2,7 +2,10 @@ package com.celvine.deb.esail.bby.data
 
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.models.CategoryCourseModel
-import com.celvine.deb.esail.bby.ui.theme.*
+import com.celvine.deb.esail.bby.ui.theme.DodgerBlue
+import com.celvine.deb.esail.bby.ui.theme.Green
+import com.celvine.deb.esail.bby.ui.theme.MaximumYellowRed
+import com.celvine.deb.esail.bby.ui.theme.Ruby
 
 object CategoryCourseData {
     val data = listOf<CategoryCourseModel>(

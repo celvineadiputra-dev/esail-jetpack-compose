@@ -69,9 +69,7 @@ fun SearchField(
         },
         onValueChange = {
             value.value = it
-            if (value.value.length > 3) {
-                callBack()
-            }
+            callBack()
         },
         placeholder = {
             Row(

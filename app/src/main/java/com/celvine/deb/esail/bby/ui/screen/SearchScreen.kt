@@ -80,7 +80,7 @@ fun SearchScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(16.dp),
             ) {
-                result.value.forEachIndexed { _, courseModel ->
+                result.value.forEachIndexed { index, courseModel ->
                     SimpleCardCourse(item = courseModel)
                     Spacer(modifier = Modifier.height(10.dp))
                 }
@@ -90,9 +90,8 @@ fun SearchScreen(navController: NavController) {
 }
 
 fun filterData(query: String): List<CourseModel> {
-    val data = CourseData.data.filter { it.title.contains(query, ignoreCase = true) }
-    if (data.isEmpty()) {
-        return CourseData.data
+    if (query.isNotEmpty()) {
+        return CourseData.data.filter { it.title.contains(query, ignoreCase = true) }
     }
-    return data
+    return CourseData.data
 }

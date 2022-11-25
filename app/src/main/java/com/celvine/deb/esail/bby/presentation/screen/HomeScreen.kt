@@ -6,17 +6,24 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.common.theme.White2
+import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
+import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
 import com.celvine.deb.esail.bby.presentation.components.*
 import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.BannerDiscount
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController
+) {
     Scaffold { paddingValues ->
         val padding = paddingValues
         LazyColumn(
@@ -33,7 +40,7 @@ fun HomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(15.dp))
                     SearchField("Jetpack Compose Beginner", enable = false, onClick = {
                         navController.navigate(Routes.Search.routes) {
-                            popUpTo(Routes.Search.routes) {
+                            popUpTo(Routes.Home.routes) {
                                 inclusive = true
                             }
                         }
@@ -55,7 +62,7 @@ fun HomeScreen(navController: NavController) {
                         .fillMaxWidth()
                         .padding(start = 16.dp, end = 16.dp)
                 ) {
-                    FlashSale()
+                    FlashSale(navController = navController)
                     Spacer(modifier = Modifier.height(80.dp))
                 }
             }

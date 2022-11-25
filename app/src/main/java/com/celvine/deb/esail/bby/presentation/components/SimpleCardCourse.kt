@@ -27,11 +27,13 @@ import com.celvine.deb.esail.bby.ui.components.Star
 
 
 @Composable
-fun SimpleCardCourse(item: CourseModel) {
+fun SimpleCardCourse(item: CourseModel, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { },
+            .clickable {
+                onClick()
+            },
         elevation = CardDefaults.cardElevation(defaultElevation = 0.4.dp),
         colors = CardDefaults.cardColors(containerColor = White)
     ) {
@@ -73,10 +75,4 @@ fun SimpleCardCourse(item: CourseModel) {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SimpleCardCoursePreview() {
-    SimpleCardCourse(item = CourseData.data[0])
 }

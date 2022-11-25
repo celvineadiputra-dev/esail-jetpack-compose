@@ -90,7 +90,7 @@ fun SearchScreen(
             ) {
                 if (courses.isNotEmpty()) {
                     courses.forEachIndexed { _, item ->
-                        SimpleCardCourse(item = item)
+                        SimpleCardCourse(item = item, onClick = {})
                         Spacer(modifier = Modifier.height(10.dp))
                     }
                 } else {

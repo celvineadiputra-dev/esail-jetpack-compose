@@ -24,9 +24,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.*
-import com.celvine.deb.esail.bby.data.model.ProfileItemModel
 import com.celvine.deb.esail.bby.data.sources.ProfileItem
-import com.celvine.deb.esail.bby.presentation.components.BottomNavigationBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

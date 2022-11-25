@@ -12,13 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
+import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
 fun FlashSale(
+    navController: NavController,
     viewModel: CoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelFactory(
             CoursesRepository()
@@ -43,7 +46,9 @@ fun FlashSale(
         Spacer(modifier = Modifier.height(10.dp))
         courses.forEachIndexed { _, item ->
             if (item.isFlashSale) {
-                SimpleCardCourse(item = item)
+                SimpleCardCourse(item = item, onClick = {
+                    navController.navigate(Routes.Detail.routes)
+                })
                 Spacer(modifier = Modifier.height(10.dp))
             }
         }

@@ -18,8 +18,13 @@ import com.celvine.deb.esail.bby.presentation.components.*
 fun DashboardScreen(navController: NavHostController = rememberNavController()) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
 
-    Scaffold(bottomBar = { BottomNavigationBar(navController) }) { paddingValues ->
+    Scaffold(bottomBar = {
+        if (currentRoute != Routes.Detail.routes) {
+            BottomNavigationBar(navController)
+        }
+    }) { paddingValues ->
         val padding = paddingValues
         NavHost(navController = navController, startDestination = Routes.Home.routes) {
             composable(Routes.Home.routes) {
@@ -30,6 +35,9 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
             }
             composable(Routes.Profile.routes) {
                 ProfileScreen(navController = navController)
+            }
+            composable(Routes.Detail.routes) {
+                DetailScreen(navController = navController)
             }
         }
     }

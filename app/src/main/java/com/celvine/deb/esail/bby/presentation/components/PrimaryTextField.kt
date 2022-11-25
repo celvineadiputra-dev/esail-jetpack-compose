@@ -6,9 +6,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.celvine.deb.esail.bby.common.theme.DodgerBlue
 import com.celvine.deb.esail.bby.common.theme.SoftGray
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrimaryTextField(placeholder: String, keyboardType: KeyboardType = KeyboardType.Text) {
     var text by remember {
@@ -29,7 +31,7 @@ fun PrimaryTextField(placeholder: String, keyboardType: KeyboardType = KeyboardT
             text = value
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = SoftGray,
+            containerColor = SoftGray,
             unfocusedBorderColor = SoftGray,
             focusedBorderColor = DodgerBlue,
             cursorColor = DodgerBlue

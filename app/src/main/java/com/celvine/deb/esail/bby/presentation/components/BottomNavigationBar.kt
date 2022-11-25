@@ -1,10 +1,8 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -14,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.celvine.deb.esail.bby.route.NavigationItem
 import com.celvine.deb.esail.bby.common.theme.DodgerBlue
+import com.celvine.deb.esail.bby.common.theme.DodgerBlueShade
 import com.celvine.deb.esail.bby.common.theme.IceBlue
 import com.celvine.deb.esail.bby.common.theme.White
 
@@ -28,9 +27,9 @@ fun BottomNavigationBar(navController: NavController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    BottomNavigation(backgroundColor = White, contentColor = DodgerBlue) {
+    NavigationBar(containerColor = White, contentColor = DodgerBlue) {
         items.forEach { item ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
@@ -54,8 +53,11 @@ fun BottomNavigationBar(navController: NavController) {
                 },
                 label = null,
                 alwaysShowLabel = false,
-                unselectedContentColor = IceBlue,
-                selectedContentColor = DodgerBlue
+                colors = NavigationBarItemDefaults.colors(
+                    indicatorColor = DodgerBlueShade,
+                    selectedIconColor = White,
+                    unselectedIconColor = IceBlue
+                )
             )
         }
     }

@@ -8,11 +8,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -31,10 +27,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.*
-import com.celvine.deb.esail.bby.data.sources.CourseData
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
-import com.celvine.deb.esail.bby.ui.components.Mentor
 import com.celvine.deb.esail.bby.ui.components.Star
 
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -61,8 +55,7 @@ fun PopularCourse(
         ) {
             Text(
                 text = "Popular Courses",
-                style = MaterialTheme.typography.h6.copy(
-                    fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 )
             )
@@ -114,7 +107,7 @@ fun CardCourse(item: CourseModel) {
                 text = item.title,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                style = MaterialTheme.typography.h6.copy(
+                style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -133,8 +126,7 @@ fun CardCourse(item: CourseModel) {
                 text = item.sortDesc,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2,
-                style = MaterialTheme.typography.subtitle2.copy(
-                    fontSize = 12.sp,
+                style = MaterialTheme.typography.bodySmall.copy(
                     fontWeight = FontWeight.Normal, color = SoftGray2
                 )
             )
@@ -142,10 +134,10 @@ fun CardCourse(item: CourseModel) {
             Mentor(mentor = item.mentor)
             Spacer(modifier = Modifier.height(5.dp))
             Button(shape = RoundedCornerShape(12.dp),
-                elevation = ButtonDefaults.elevation(0.dp), onClick = { /*TODO*/ }) {
+                elevation = ButtonDefaults.buttonElevation(0.dp), onClick = { /*TODO*/ }) {
                 Text(
                     text = "Join Now",
-                    style = MaterialTheme.typography.button.copy(
+                    style = MaterialTheme.typography.bodySmall.copy(
                         color = White,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold
@@ -161,7 +153,7 @@ fun Price(isFree: Boolean = false, price: String = "0") {
     if (isFree) {
         Text(
             text = "Free",
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 color = Ruby,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 12.sp,
@@ -170,7 +162,7 @@ fun Price(isFree: Boolean = false, price: String = "0") {
     } else {
         Text(
             text = "Rp. $price",
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 color = Green,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 12.sp

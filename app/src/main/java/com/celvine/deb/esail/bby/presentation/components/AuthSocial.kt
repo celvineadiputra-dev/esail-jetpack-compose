@@ -1,15 +1,17 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.SoftGray
@@ -20,7 +22,7 @@ fun AuthSocial() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         Text(
             text = "Sign In with Google or Facebook",
-            style = MaterialTheme.typography.subtitle2.copy(color = SoftGray2)
+            style = MaterialTheme.typography.bodySmall.copy(color = SoftGray2)
         )
     }
     Spacer(modifier = Modifier.height(10.dp))
@@ -41,7 +43,7 @@ fun AuthSocial() {
                     .height(24.dp)
             )
             Spacer(modifier = Modifier.width(7.dp))
-            Text(text = "Google", style = MaterialTheme.typography.button)
+            Text(text = "Google", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium))
         }
 
         Spacer(modifier = Modifier.width(5.dp))
@@ -62,7 +64,7 @@ fun AuthSocial() {
                     .height(24.dp)
             )
             Spacer(modifier = Modifier.width(7.dp))
-            Text(text = "Facebook", style = MaterialTheme.typography.button)
+            Text(text = "Facebook", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium))
         }
     }
 }

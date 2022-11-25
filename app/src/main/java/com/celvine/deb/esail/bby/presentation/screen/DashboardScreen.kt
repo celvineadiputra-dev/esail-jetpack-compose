@@ -3,8 +3,8 @@ package com.celvine.deb.esail.bby.presentation.screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -12,9 +12,9 @@ import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.*
 import com.celvine.deb.esail.bby.common.theme.White2
-import com.celvine.deb.esail.bby.presentation.components.PopularCourse
-import com.celvine.deb.esail.bby.presentation.components.SearchField
+import com.celvine.deb.esail.bby.presentation.components.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
     navController: NavController

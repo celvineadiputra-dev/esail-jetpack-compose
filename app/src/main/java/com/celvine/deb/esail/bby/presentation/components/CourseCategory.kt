@@ -1,4 +1,4 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -6,10 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -22,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.data.sources.CategoryCourseData
 import com.celvine.deb.esail.bby.common.theme.Dark
+import com.celvine.deb.esail.bby.common.theme.White
 
 @Composable
 fun CourseCategory() {
@@ -33,8 +31,7 @@ fun CourseCategory() {
         ) {
             Text(
                 text = "Course Category",
-                style = MaterialTheme.typography.h6.copy(
-                    fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 )
             )
@@ -60,7 +57,10 @@ fun ItemCategory(icon: Int, label: String, color: Color) {
             indication = null
         ) { }, horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Card(shape = RoundedCornerShape(percent = 100)) {
+        Card(
+            shape = RoundedCornerShape(percent = 100),
+            colors = CardDefaults.cardColors(containerColor = White)
+        ) {
             Icon(
                 modifier = Modifier
                     .padding(20.dp)
@@ -73,8 +73,8 @@ fun ItemCategory(icon: Int, label: String, color: Color) {
         }
         Spacer(modifier = Modifier.height(7.dp))
         Text(
-            text = label, style = MaterialTheme.typography.subtitle1.copy(
-                color = Dark, fontWeight = FontWeight.SemiBold, fontSize = 12.sp
+            text = label, style = MaterialTheme.typography.labelSmall.copy(
+                color = Dark, fontWeight = FontWeight.SemiBold, fontSize = 11.sp
             )
         )
     }

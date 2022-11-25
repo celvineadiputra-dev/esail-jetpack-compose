@@ -1,4 +1,4 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.celvine.deb.esail.bby.common.theme.DodgerBlue
 import com.celvine.deb.esail.bby.common.theme.SoftGray
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordTextField(placeholder: String) {
     var text by remember {
@@ -34,7 +36,7 @@ fun PasswordTextField(placeholder: String) {
             text = value
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = SoftGray,
+            containerColor = SoftGray,
             unfocusedBorderColor = SoftGray,
             focusedBorderColor = DodgerBlue,
             cursorColor = DodgerBlue

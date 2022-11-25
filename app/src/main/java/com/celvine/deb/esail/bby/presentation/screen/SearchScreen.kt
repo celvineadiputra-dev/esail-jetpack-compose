@@ -1,8 +1,6 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
-import android.util.Log
 import android.widget.Toast
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.presentation.components.SearchField
 import com.celvine.deb.esail.bby.ui.components.SimpleCardCourse
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
@@ -38,9 +35,6 @@ fun SearchScreen(
         mutableStateOf("")
     }
     val listState = rememberLazyListState()
-//    val result = remember {
-//        mutableStateOf(listOf<CourseModel>())
-//    }
     val courses by viewModel.courses.collectAsState()
     val query by viewModel.query
 
@@ -64,7 +58,7 @@ fun SearchScreen(
                         .weight(0.9f)
                 ) {
                     SearchField(
-                        placeholder = "Jetpack Compose, Flutter, Vue Js",
+                        placeholder = "Jetpack Compose",
                         value = query,
                         onValueChange = viewModel::search,
                         onClear = viewModel::removeQuery
@@ -94,7 +88,7 @@ fun SearchScreen(
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                if(courses.isNotEmpty()){
+                if (courses.isNotEmpty()) {
                     courses.forEachIndexed { _, item ->
                         SimpleCardCourse(item = item)
                         Spacer(modifier = Modifier.height(10.dp))

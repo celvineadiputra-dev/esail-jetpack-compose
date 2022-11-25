@@ -5,8 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,9 +17,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.route.Routes
-import com.celvine.deb.esail.bby.ui.components.AuthSocial
-import com.celvine.deb.esail.bby.ui.components.PasswordTextField
-import com.celvine.deb.esail.bby.ui.components.PrimaryButton
+import com.celvine.deb.esail.bby.presentation.components.AuthSocial
+import com.celvine.deb.esail.bby.presentation.components.PasswordTextField
+import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
 import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
 import kotlin.reflect.KFunction1
 
@@ -42,7 +41,7 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(40.dp))
         Text(
             text = if (authType.value == "email") "Email" else "Phone Number",
-            style = MaterialTheme.typography.subtitle1.copy(fontSize = 15.sp)
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
         )
         Spacer(modifier = Modifier.height(3.dp))
         PrimaryTextField(
@@ -51,7 +50,7 @@ fun LoginScreen(navController: NavController) {
         )
 
         Spacer(modifier = Modifier.height(15.dp))
-        Text(text = "Password", style = MaterialTheme.typography.subtitle1.copy(fontSize = 15.sp))
+        Text(text = "Password", style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp))
         Spacer(modifier = Modifier.height(3.dp))
         PasswordTextField(placeholder = "Password")
 
@@ -62,7 +61,7 @@ fun LoginScreen(navController: NavController) {
             ) {
                 Text(
                     text = "Forgot Password",
-                    style = MaterialTheme.typography.subtitle1.copy(
+                    style = MaterialTheme.typography.bodySmall.copy(
                         fontSize = 15.sp,
                         color = SoftGray2
                     )
@@ -91,7 +90,7 @@ fun LoginScreen(navController: NavController) {
         ) {
             Text(
                 text = "Don't have an account ?",
-                style = MaterialTheme.typography.subtitle1.copy(color = SoftGray2)
+                style = MaterialTheme.typography.bodySmall.copy(color = SoftGray2)
             )
             Spacer(modifier = Modifier.width(5.dp))
             TextButton(onClick = {
@@ -103,7 +102,7 @@ fun LoginScreen(navController: NavController) {
             }) {
                 Text(
                     text = "Sign Up",
-                    style = MaterialTheme.typography.button.copy(
+                    style = MaterialTheme.typography.bodySmall.copy(
                         color = DodgerBlue,
                         fontWeight = FontWeight.Bold
                     )
@@ -118,7 +117,7 @@ fun WelcomeText() {
     Column {
         Text(
             text = "Welcome Back 👋",
-            style = MaterialTheme.typography.h3.copy(
+            style = MaterialTheme.typography.headlineSmall.copy(
                 color = DodgerBlue,
                 fontSize = 25.sp,
                 fontWeight = FontWeight.SemiBold
@@ -127,7 +126,7 @@ fun WelcomeText() {
         Spacer(modifier = Modifier.height(7.dp))
         Text(
             text = "We happy to see you again, To use your account, your should login first",
-            style = MaterialTheme.typography.subtitle1.copy(color = SoftGray2)
+            style = MaterialTheme.typography.bodySmall.copy(color = SoftGray2)
         )
     }
 }
@@ -190,14 +189,14 @@ fun TabbyCard(
     Button(
         modifier = modifier,
         onClick = { setCurrentActive(index) },
-        shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(backgroundColor = if (isActive) White else Transparant),
-        elevation = ButtonDefaults.elevation(0.dp),
+        shape = Shapes.medium,
+        colors = ButtonDefaults.buttonColors(containerColor = if (isActive) White else Transparant),
+        elevation = ButtonDefaults.buttonElevation(0.dp),
     ) {
         Text(
             text = label,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.button.copy(fontSize = 12.sp)
+            style = ButtonStyle.copy(color = Dark)
         )
     }
 }

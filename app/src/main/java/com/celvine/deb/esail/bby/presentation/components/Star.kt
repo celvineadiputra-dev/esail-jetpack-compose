@@ -3,8 +3,8 @@ package com.celvine.deb.esail.bby.ui.components
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +29,7 @@ fun Star(rating: String) {
         Spacer(modifier = Modifier.width(5.dp))
         Text(
             text = rating,
-            style = MaterialTheme.typography.caption.copy(
+            style = MaterialTheme.typography.labelSmall.copy(
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Medium,
                 color = SoftGray2,

@@ -3,10 +3,10 @@ package com.celvine.deb.esail.bby.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +23,7 @@ import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.data.sources.CourseData
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.common.theme.White
+import com.celvine.deb.esail.bby.presentation.components.Mentor
 import com.celvine.deb.esail.bby.presentation.components.Price
 
 
@@ -55,7 +56,7 @@ fun SimpleCardCourse(item: CourseModel) {
                     text = item.title,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
-                    style = MaterialTheme.typography.subtitle1.copy(
+                    style = MaterialTheme.typography.labelMedium.copy(
                         fontSize = 12.sp,
                         fontWeight = FontWeight.SemiBold
                     )

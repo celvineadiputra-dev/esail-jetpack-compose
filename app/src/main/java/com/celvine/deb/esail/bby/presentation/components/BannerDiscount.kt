@@ -3,8 +3,9 @@ package com.celvine.deb.esail.bby.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,9 +22,8 @@ import com.celvine.deb.esail.bby.common.theme.White
 fun BannerDiscount() {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        backgroundColor = HonoluluBlue,
         shape = RoundedCornerShape(22.dp),
-        contentColor = White
+        colors = CardDefaults.cardColors(containerColor = HonoluluBlue, contentColor = White)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -46,11 +46,14 @@ fun BannerDiscount() {
             ) {
                 Text(
                     text = "25% OFF *",
-                    style = MaterialTheme.typography.h6.copy(color = White, fontSize = 15.sp)
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = White,
+                        fontSize = 15.sp
+                    )
                 )
                 Text(
                     text = "Today's Special",
-                    style = MaterialTheme.typography.h6.copy(
+                    style = MaterialTheme.typography.bodyMedium.copy(
                         color = White,
                         fontSize = 22.sp,
                         fontWeight = FontWeight.SemiBold
@@ -58,7 +61,10 @@ fun BannerDiscount() {
                 )
                 Text(
                     text = "Get a Discount for Every \n Course Order Only Valid for \n Today.!",
-                    style = MaterialTheme.typography.h6.copy(color = White, fontSize = 13.sp)
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = White,
+                        fontSize = 13.sp
+                    )
                 )
             }
         }

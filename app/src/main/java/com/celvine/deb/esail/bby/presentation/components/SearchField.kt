@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
@@ -20,6 +21,7 @@ import com.celvine.deb.esail.bby.common.theme.DodgerBlue
 import com.celvine.deb.esail.bby.common.theme.SoftGray
 import com.celvine.deb.esail.bby.common.theme.White
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchField(
     placeholder: String,
@@ -39,7 +41,7 @@ fun SearchField(
         value = value,
         enabled = enable,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = White,
+            containerColor = White,
             unfocusedBorderColor = White,
             focusedBorderColor = SoftGray,
             cursorColor = DodgerBlue
@@ -76,7 +78,7 @@ fun SearchField(
             ) {
                 Text(
                     text = placeholder,
-                    style = MaterialTheme.typography.caption.copy(fontWeight = FontWeight.Medium)
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium)
                 )
             }
         },

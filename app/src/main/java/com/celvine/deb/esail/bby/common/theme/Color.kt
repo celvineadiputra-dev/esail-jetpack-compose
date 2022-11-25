@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 var HonoluluBlue = Color(0xFF0961F5)
 var DodgerBlue = Color(0xFF0496FF)
+var DodgerBlueShade = Color(0xFF1da1ff)
 var MaximumYellowRed = Color(0xFFFFBC42)
 var Ruby = Color(0xFFD81159)
 var QuinacridoneMagenta = Color(0xFF8F2D56)

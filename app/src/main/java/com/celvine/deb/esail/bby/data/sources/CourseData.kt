@@ -25,7 +25,7 @@ object CourseData {
             price = "139K",
             banner = "https://developer.android.com/static/codelabs/jetpack-compose-animation/img/5bb2e531a22c7de0.png?hl=id",
             rating = "4.9 (409)",
-            mentor = "Debb",
+            mentor = "Deb",
             category = "Development",
             isFlashSale = true
         ),

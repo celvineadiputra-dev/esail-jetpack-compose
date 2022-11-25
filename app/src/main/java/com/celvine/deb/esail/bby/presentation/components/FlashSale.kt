@@ -16,7 +16,6 @@ import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
-import com.celvine.deb.esail.bby.ui.components.SimpleCardCourse
 
 @Composable
 fun FlashSale(

@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.celvine.deb.esail.bby.presentation.components.SearchField
-import com.celvine.deb.esail.bby.ui.components.SimpleCardCourse
+import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.common.theme.White2
 import com.celvine.deb.esail.bby.data.repositories.CoursesRepository

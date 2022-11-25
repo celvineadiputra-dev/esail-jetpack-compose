@@ -1,10 +1,7 @@
 package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material3.*
@@ -54,6 +51,7 @@ fun SearchField(
         ),
         leadingIcon = {
             Icon(
+                modifier = Modifier.width(24.dp).height(24.dp),
                 painter = painterResource(id = R.drawable.search_icon),
                 contentDescription = "Search Icon"
             )

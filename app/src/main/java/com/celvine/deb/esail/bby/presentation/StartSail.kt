@@ -11,11 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.celvine.deb.esail.bby.presentation.screen.*
 import com.celvine.deb.esail.bby.route.Routes
-import com.celvine.deb.esail.bby.presentation.screen.DashboardScreen
-import com.celvine.deb.esail.bby.presentation.screen.LoginScreen
-import com.celvine.deb.esail.bby.presentation.screen.RegisterScreen
-import com.celvine.deb.esail.bby.presentation.screen.SearchScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -24,7 +21,6 @@ fun StartSail(
     navController: NavHostController = rememberNavController()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
 
     Scaffold { paddingValues ->
         val padding = paddingValues
@@ -36,10 +32,7 @@ fun StartSail(
                 RegisterScreen(navController = navController)
             }
             composable(Routes.Dashboard.routes) {
-                DashboardScreen(navController = navController)
-            }
-            composable(Routes.Search.routes) {
-                SearchScreen(navController = navController)
+                DashboardScreen()
             }
         }
     }

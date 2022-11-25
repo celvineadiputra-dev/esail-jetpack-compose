@@ -1,4 +1,4 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,8 +23,7 @@ import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.data.sources.CourseData
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.common.theme.White
-import com.celvine.deb.esail.bby.presentation.components.Mentor
-import com.celvine.deb.esail.bby.presentation.components.Price
+import com.celvine.deb.esail.bby.ui.components.Star
 
 
 @Composable

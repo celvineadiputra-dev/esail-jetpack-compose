@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,13 +25,12 @@ import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CaptainModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
+import com.celvine.deb.esail.bby.data.viewmodels.ContentViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelContentFactory
 import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
 import com.celvine.deb.esail.bby.di.Injection
-import com.celvine.deb.esail.bby.presentation.components.ExpandedText
-import com.celvine.deb.esail.bby.presentation.components.Price
-import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
-import com.celvine.deb.esail.bby.presentation.components.PrimaryOutlineButton
+import com.celvine.deb.esail.bby.presentation.components.*
 
 @Composable
 fun DetailScreen(
@@ -39,6 +39,11 @@ fun DetailScreen(
     viewModel: CoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelCoursesFactory(
             Injection.provideCourseRepository()
+        )
+    ),
+    contentViewModel: ContentViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelContentFactory(
+            Injection.provideContentRepository()
         )
     )
 ) {
@@ -57,6 +62,7 @@ fun DetailScreen(
                         BannerCourse(image = uiState.data[0].banner)
                         DetailCourse(detail = uiState.data[0])
                         Captain(captain = uiState.data[0].Captain)
+                        Content(id = uiState.data[0].id, contentViewModel = contentViewModel)
                     }
                     is UiState.Error -> {
 
@@ -216,7 +222,7 @@ fun Captain(captain: CaptainModel) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 30.dp)
+            .padding(horizontal = 20.dp)
     ) {
         Text(
             text = "Captain",
@@ -266,6 +272,37 @@ fun Captain(captain: CaptainModel) {
                 contentDescription = "Say hay to captain",
                 tint = HonoluluBlue
             )
+        }
+    }
+}
+
+@Composable
+fun Content(id: Int, contentViewModel: ContentViewModel) {
+    val openId by contentViewModel.openId.collectAsState()
+    contentViewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
+        when (uiState) {
+            is UiState.Loading -> {
+                contentViewModel.getContent(id = id)
+            }
+            is UiState.Success -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp, vertical = 10.dp)
+                ) {
+                    Text(
+                        text = "Course Content",
+                        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
+                    )
+                    uiState.data.forEach { item ->
+                        Accordion(itemModel = item, onClickItem = {
+                            contentViewModel.setOpenId(item.Id)
+                        }, expanded = openId == item.Id)
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
+                }
+            }
         }
     }
 }

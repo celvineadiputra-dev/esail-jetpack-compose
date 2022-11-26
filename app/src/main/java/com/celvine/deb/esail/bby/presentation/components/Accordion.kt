@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,14 +30,18 @@ import com.celvine.deb.esail.bby.data.sources.CourseContentData
 fun Accordion(itemModel: ContentModel, onClickItem: () -> Unit, expanded: Boolean) {
     Card(colors = CardDefaults.cardColors(containerColor = White)) {
         Column {
-            HeaderView(questionText = itemModel.Title, onClickItem = onClickItem)
+            HeaderView(
+                questionText = itemModel.Title,
+                onClickItem = onClickItem,
+                totalTime = itemModel.TotalTime
+            )
             ExpandableView(answerText = itemModel.Sections, isExpanded = expanded)
         }
     }
 }
 
 @Composable
-fun HeaderView(questionText: String, onClickItem: () -> Unit) {
+fun HeaderView(questionText: String, onClickItem: () -> Unit, totalTime: String) {
     Box(
         modifier = Modifier
             .clickable(
@@ -46,16 +51,28 @@ fun HeaderView(questionText: String, onClickItem: () -> Unit) {
             )
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
-        Text(
-            text = questionText,
-            color = Dark,
+        Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            style = MaterialTheme.typography.bodyMedium.copy(
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 12.sp
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = questionText,
+                color = Dark,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 12.sp
+                )
             )
-        )
+            Text(
+                text = totalTime,
+                color = Dark,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 12.sp
+                )
+            )
+        }
     }
 }
 
@@ -97,7 +114,10 @@ fun ExpandableView(answerText: List<SectionModel>, isExpanded: Boolean) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        modifier = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Icon(
                             painter = painterResource(id = R.drawable.circle_play),
                             contentDescription = "play",
@@ -107,6 +127,8 @@ fun ExpandableView(answerText: List<SectionModel>, isExpanded: Boolean) {
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             text = item.Title,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                             style = MaterialTheme.typography.labelSmall.copy(
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 12.sp,

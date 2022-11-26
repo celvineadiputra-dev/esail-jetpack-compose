@@ -13,6 +13,6 @@ class ViewModelContentFactory(private val repository: ContentRepository) :
         if (modelClass.isAssignableFrom(ContentViewModel::class.java)) {
             return ContentViewModel(repository) as T
         }
-        throw  java.lang.IllegalArgumentException("Unknown View Model")
+        throw  java.lang.IllegalArgumentException("Unknown View Model $modelClass")
     }
 }

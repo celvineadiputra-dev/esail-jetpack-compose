@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.White2
-import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.FlashSaleCoursesViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.PopularCourseViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
@@ -25,7 +24,7 @@ import com.celvine.deb.esail.bby.presentation.components.BannerDiscount
 @Composable
 fun HomeScreen(
     navController: NavController,
-    flashSaletViewModel: FlashSaleCoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+    flashSaleViewModel: FlashSaleCoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelCoursesFactory(
             Injection.provideCourseRepository()
         )
@@ -84,10 +83,10 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .padding(start = 16.dp, end = 16.dp)
                 ) {
-                    flashSaletViewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
+                    flashSaleViewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                         when (uiState) {
                             is UiState.Loading -> {
-                                flashSaletViewModel.getFlashSale()
+                                flashSaleViewModel.getFlashSale()
                             }
                             is UiState.Success -> {
                                 FlashSale(navController = navController, courses = uiState.data)

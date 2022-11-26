@@ -11,11 +11,12 @@ import com.celvine.deb.esail.bby.common.theme.Dark
 import com.celvine.deb.esail.bby.common.theme.Shapes
 
 @Composable
-fun PrimaryOutlineButton(modifier: Modifier, label: String) {
+fun PrimaryOutlineButton(modifier: Modifier, label: String, onClick: () -> Unit = {}) {
     OutlinedButton(
         modifier = modifier,
         shape = Shapes.medium,
-        onClick = { /*TODO*/ }) {
+        onClick = onClick
+    ) {
         Text(
             text = label,
             style = MaterialTheme.typography.bodySmall.copy(

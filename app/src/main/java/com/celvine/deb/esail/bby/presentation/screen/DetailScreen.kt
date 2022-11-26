@@ -1,5 +1,6 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,10 +26,7 @@ import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CaptainModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
-import com.celvine.deb.esail.bby.data.viewmodels.ContentViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelContentFactory
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
+import com.celvine.deb.esail.bby.data.viewmodels.*
 import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.*
 
@@ -45,6 +43,11 @@ fun DetailScreen(
         factory = ViewModelContentFactory(
             Injection.provideContentRepository()
         )
+    ),
+    wishListViewModel: WishlistViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelWishListFactory(
+            Injection.provideWishlistRepository()
+        )
     )
 ) {
     LazyColumn(
@@ -60,7 +63,10 @@ fun DetailScreen(
                     }
                     is UiState.Success -> {
                         BannerCourse(image = uiState.data[0].banner)
-                        DetailCourse(detail = uiState.data[0])
+                        DetailCourse(
+                            wishListViewModel = wishListViewModel,
+                            detail = uiState.data[0]
+                        )
                         Captain(captain = uiState.data[0].Captain)
                         Content(id = uiState.data[0].id, contentViewModel = contentViewModel)
                     }
@@ -122,7 +128,7 @@ fun BannerCourse(image: String) {
 }
 
 @Composable
-fun DetailCourse(detail: CourseModel) {
+fun DetailCourse(wishListViewModel: WishlistViewModel, detail: CourseModel) {
     Card(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
         colors = CardDefaults.cardColors(containerColor = White)
@@ -173,9 +179,9 @@ fun DetailCourse(detail: CourseModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row {
-                    Info(label = "102 Videos", icon = R.drawable.play)
+                    Info(label = "${detail.totalVideo} Videos", icon = R.drawable.play)
                     Spacer(modifier = Modifier.width(10.dp))
-                    Info(label = "4h 31m", icon = R.drawable.timer)
+                    Info(label = detail.totalTime, icon = R.drawable.timer)
                 }
                 Price(isFree = false, price = "132K")
             }
@@ -185,9 +191,15 @@ fun DetailCourse(detail: CourseModel) {
             PrimaryButton(modifier = Modifier.height(55.dp), text = "Enroll Now", onClick = {})
             Spacer(modifier = Modifier.height(6.dp))
             Row(modifier = Modifier.fillMaxWidth()) {
-                PrimaryOutlineButton(modifier = Modifier.weight(1f), label = "Add to cart")
+                PrimaryOutlineButton(
+                    modifier = Modifier.weight(1f),
+                    label = "Add to cart"
+                )
                 Spacer(modifier = Modifier.width(5.dp))
-                PrimaryOutlineButton(modifier = Modifier.weight(1f), label = "Add to wishlist")
+                PrimaryOutlineButton(modifier = Modifier.weight(1f), label = "Add to wishlist",
+                    onClick = {
+                        wishListViewModel.addToWishlist(detail.id)
+                    })
             }
         }
     }

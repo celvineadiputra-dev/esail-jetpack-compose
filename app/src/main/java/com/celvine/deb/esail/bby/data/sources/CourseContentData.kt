@@ -79,6 +79,140 @@ object CourseContentData {
                     Title = "A fist, unsuccessfully try"
                 ),
             )
+        ),
+        ContentModel(
+            Id = 4,
+            CourseId = 2,
+            Title = "Go-Lang Dasar",
+            TotalTime = "7h 35m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "08:17", Title = "Pengenalan golang"),
+                SectionModel(
+                    Id = 2,
+                    Time = "09:14",
+                    Title = "Program Hello World"
+                ),
+                SectionModel(Id = 3, Time = "07:59", Title = "Tipe Data Number"),
+                SectionModel(
+                    Id = 4,
+                    Time = "02:35",
+                    Title = "Tipe Data Boolean"
+                ),
+                SectionModel(
+                    Id = 5,
+                    Time = "12:45",
+                    Title = "Variable"
+                ),
+                SectionModel(
+                    Id = 6,
+                    Time = "05:35",
+                    Title = "Constant"
+                ),
+                SectionModel(
+                    Id = 7,
+                    Time = "06:21",
+                    Title = "Konversi Tipe Data"
+                ),
+            )
+        ),
+        ContentModel(
+            Id = 5,
+            CourseId = 2,
+            Title = "Go-Lang Modules",
+            TotalTime = "4h 20m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "02:04", Title = "Pendahuluan"),
+                SectionModel(
+                    Id = 2,
+                    Time = "04:01",
+                    Title = "Pengenalan Go Modules"
+                ),
+                SectionModel(Id = 3, Time = "08:31", Title = "Membuat Module"),
+                SectionModel(
+                    Id = 4,
+                    Time = "04:00",
+                    Title = "Menambah Dependency"
+                ),
+                SectionModel(
+                    Id = 5,
+                    Time = "02:35",
+                    Title = "Upgrade Module"
+                ),
+                SectionModel(
+                    Id = 6,
+                    Time = "04:36",
+                    Title = "Upgrade Dependency"
+                ),
+                SectionModel(
+                    Id = 7,
+                    Time = "01:39",
+                    Title = "Materia Selanjutnya"
+                ),
+            )
+        ),
+        ContentModel(
+            Id = 6,
+            CourseId = 3,
+            Title = "Introduction with jetpack compose",
+            TotalTime = "43m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:47", Title = "Introduction"),
+                SectionModel(
+                    Id = 2,
+                    Time = "04:01",
+                    Title = "About Jetpack Compose"
+                ),
+                SectionModel(Id = 3, Time = "07:59", Title = "About Recompositing"),
+                SectionModel(
+                    Id = 4,
+                    Time = "07:23",
+                    Title = "State in jetpack compose"
+                ),
+                SectionModel(
+                    Id = 5,
+                    Time = "06:37",
+                    Title = "Compose Lifecycle"
+                ),
+                SectionModel(
+                    Id = 6,
+                    Time = "04:55",
+                    Title = "Side Effects"
+                ),
+                SectionModel(
+                    Id = 7,
+                    Time = "06:10",
+                    Title = "Layouts"
+                ),
+            )
+        ),
+        ContentModel(
+            Id = 7,
+            CourseId = 3,
+            Title = "Let's Build An App",
+            TotalTime = "7h 33m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "09:39", Title = "Create New Project"),
+                SectionModel(
+                    Id = 2,
+                    Time = "03:00",
+                    Title = "Add Dependencies"
+                ),
+                SectionModel(Id = 3, Time = "05:51", Title = "Create Model Classes"),
+                SectionModel(
+                    Id = 4,
+                    Time = "14:58",
+                    Title = "Setup ROOM Database"
+                ),
+            )
+        ),
+        ContentModel(
+            Id = 8,
+            CourseId = 3,
+            Title = "Final Word",
+            TotalTime = "4m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "04:00", Title = "Final Word"),
+            )
         )
     )
 }

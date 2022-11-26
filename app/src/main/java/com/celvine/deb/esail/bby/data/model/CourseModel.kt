@@ -12,5 +12,7 @@ data class CourseModel(
     val category: String,
     val isFlashSale: Boolean = false,
     val isPopular: Boolean = false,
-    val Captain: CaptainModel
+    val Captain: CaptainModel,
+    val totalVideo: Int,
+    val totalTime: String
 )

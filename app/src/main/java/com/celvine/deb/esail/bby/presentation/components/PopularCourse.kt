@@ -3,6 +3,8 @@ package com.celvine.deb.esail.bby.presentation.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -10,6 +12,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -78,6 +81,12 @@ fun CardCourse(item: CourseModel, onClick: (Int) -> Unit) {
             .background(color = White)
             .border(BorderStroke(1.4.dp, SolidColor(SoftGray)), shape = RoundedCornerShape(16.dp))
             .padding(14.dp)
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
+            ) {
+                onClick(item.id)
+            }
     ) {
         Column {
             AsyncImage(
@@ -123,20 +132,6 @@ fun CardCourse(item: CourseModel, onClick: (Int) -> Unit) {
             )
             Spacer(modifier = Modifier.height(5.dp))
             Mentor(mentor = item.Captain.Name)
-            Spacer(modifier = Modifier.height(5.dp))
-            Button(shape = RoundedCornerShape(12.dp),
-                elevation = ButtonDefaults.buttonElevation(0.dp), onClick = {
-                    onClick(item.id)
-                }) {
-                Text(
-                    text = "Join Now",
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        color = White,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                )
-            }
         }
     }
 }

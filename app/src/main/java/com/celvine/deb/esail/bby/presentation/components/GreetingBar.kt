@@ -4,8 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.Dark
+import com.celvine.deb.esail.bby.common.theme.Transparant
 
 @Composable
 fun GreetingBar() {
@@ -29,23 +29,26 @@ fun GreetingBar() {
         Column {
             Text(
                 text = "Hello, 👋 Celvine",
-                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp
+                )
             )
             Text(
                 text = "What would you like to learn today ? \nSearh Below",
                 style = MaterialTheme.typography.bodySmall.copy(color = Dark)
             )
         }
-        Image(
-            modifier = Modifier
-                .width(24.dp)
-                .clickable(
-                    interactionSource = interactionSource,
-                    indication = null
-                ) { },
-            painter = painterResource(id = R.drawable.bell_icon),
-            contentDescription = "Notification",
-        )
+        FilledIconButton(
+            onClick = { /*TODO*/ },
+            colors = IconButtonDefaults.filledIconButtonColors(containerColor = Transparant)
+        ) {
+            Icon(
+                modifier = Modifier.width(20.dp),
+                painter = painterResource(id = R.drawable.cart_shopping),
+                contentDescription = "Cart"
+            )
+        }
     }
 }
 

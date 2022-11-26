@@ -45,8 +45,8 @@ fun HeaderView(questionText: String, onClickItem: () -> Unit, totalTime: String)
     Box(
         modifier = Modifier
             .clickable(
-                indication = null, // Removes the ripple effect on tap
-                interactionSource = remember { MutableInteractionSource() }, // Removes the ripple effect on tap
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
                 onClick = onClickItem
             )
             .padding(horizontal = 12.dp, vertical = 8.dp)

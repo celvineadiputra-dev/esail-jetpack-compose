@@ -1,46 +1,64 @@
 package com.celvine.deb.esail.bby.data.viewmodels
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CoursesViewModel(private val repository: CoursesRepository) : ViewModel() {
-    private val _courses = MutableStateFlow(
-        repository.getCourses()
-    )
+    private val _uiState: MutableStateFlow<UiState<List<CourseModel>>> =
+        MutableStateFlow(UiState.Loading)
 
-    val courses: StateFlow<List<CourseModel>> get() = _courses
+    val uiState: StateFlow<UiState<List<CourseModel>>> get() = _uiState
 
     private val _query = mutableStateOf("")
 
     val query: State<String> get() = _query
 
+    fun getAll() {
+        viewModelScope.launch {
+            repository.getCourses().catch {
+                _uiState.value = UiState.Error(it.message.toString())
+            }.collect { courses ->
+                _uiState.value = UiState.Success(courses)
+            }
+        }
+    }
+
     fun search(query: String) {
         _query.value = query
-        _courses.value = repository.searchCourse(query = query)
+        viewModelScope.launch {
+            repository.searchCourse(query = _query.value).catch {
+                _uiState.value = UiState.Error(it.message.toString())
+            }.collect { result ->
+                _uiState.value = UiState.Success(result)
+            }
+        }
+    }
+
+    fun getById(id: Int) {
+        viewModelScope.launch {
+            repository.getById(id = id).catch {
+                _uiState.value = UiState.Error(it.message.toString())
+            }.collect { result ->
+                _uiState.value = UiState.Success(result)
+            }
+        }
     }
 
     fun removeQuery() {
         _query.value = ""
-        _courses.value = repository.getCourses()
+        this.getAll()
     }
 }
 
-class ViewModelFactory(private val repository: CoursesRepository) :
-    ViewModelProvider.NewInstanceFactory() {
-
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CoursesViewModel::class.java)) {
-            return CoursesViewModel(repository) as T
-        }
-        throw  java.lang.IllegalArgumentException("Unknown View Model")
-    }
-}

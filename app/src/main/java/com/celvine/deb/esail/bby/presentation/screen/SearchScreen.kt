@@ -17,25 +17,25 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.presentation.components.SearchField
 import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.common.theme.White2
-import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
+import com.celvine.deb.esail.bby.di.Injection
 
 
 @Composable
 fun SearchScreen(
     navController: NavController,
-    viewModel: CoursesViewModel = viewModel(factory = ViewModelFactory(CoursesRepository()))
+    viewModel: CoursesViewModel = viewModel(factory = ViewModelCoursesFactory(Injection.provideCourseRepository()))
 ) {
     val searchText = remember {
         mutableStateOf("")
     }
     val listState = rememberLazyListState()
-    val courses by viewModel.courses.collectAsState()
     val query by viewModel.query
 
     LazyColumn(
@@ -83,18 +83,29 @@ fun SearchScreen(
                 }
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                if (courses.isNotEmpty()) {
-                    courses.forEachIndexed { _, item ->
-                        SimpleCardCourse(item = item, onClick = {})
-                        Spacer(modifier = Modifier.height(10.dp))
+
+            viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
+                when (uiState) {
+                    is UiState.Loading -> {
+                        viewModel.getAll()
                     }
-                } else {
-                    Text(text = "Not Found")
+                    is UiState.Success -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        ) {
+                            if (uiState.data.isNotEmpty()) {
+                                uiState.data.forEachIndexed { _, item ->
+                                    SimpleCardCourse(item = item, navController = navController)
+                                    Spacer(modifier = Modifier.height(10.dp))
+                                }
+                            } else {
+                                Text(text = "Not Found")
+                            }
+                        }
+                    }
+                    is UiState.Error -> {}
                 }
             }
         }

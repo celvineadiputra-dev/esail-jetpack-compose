@@ -20,7 +20,7 @@ fun PrimaryOutlineButton(modifier: Modifier, label: String) {
             text = label,
             style = MaterialTheme.typography.bodySmall.copy(
                 color = Dark,
-                fontWeight = FontWeight.SemiBold, fontSize = 12.sp
+                fontWeight = FontWeight.SemiBold, fontSize = 11.sp
             )
         )
     }

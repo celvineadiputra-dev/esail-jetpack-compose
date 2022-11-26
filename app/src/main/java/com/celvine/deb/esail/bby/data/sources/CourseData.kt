@@ -1,75 +1,33 @@
 package com.celvine.deb.esail.bby.data.sources
 
+import com.celvine.deb.esail.bby.data.model.CaptainModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
 
 object CourseData {
     val data = listOf(
         CourseModel(
             id = 1,
-            title = "UI Styleguide With Figma",
-            sortDesc = "Saatnya mendesain UI dengan lebih mudah cepat dan mudah dengan menggunakan Jetpack Compose, cara modern untuk membuat layout di Android.",
-            desc = "",
-            isFree = true,
-            banner = "https://buildwithangga.com/storage/assets/thumbnails/UI%20Styleguide%20With%20Figma%201.jpeg",
-            rating = "4.5 (1027)",
-            mentor = "Celvine",
-            isPopular = true,
-            category = "Design"
-        ),
-        CourseModel(
-            id = 2,
-            title = "Belajar Membuat Aplikasi Android dengan Jetpack Compose",
-            sortDesc = "Saatnya mendesain UI dengan lebih mudah cepat dan mudah",
-            desc = "",
+            title = "Docker & Kubernetes: The Practical Guide",
+            sortDesc = "Learn Docker, Docker Compose, Multi-Container Projects, Deployment and all about Kubernetes from the ground up!",
+            desc = "Join this bestselling Docker & Kubernetes course and learn two of the most important development technologies from the ground up, in great detail!\n" +
+                    "\n" +
+                    "Docker & Kubernetes are amongst the most in-demand technologies and topics you can learn these days.\n" +
+                    "\n" +
+                    "Why?\n" +
+                    "\n" +
+                    "Because they significantly simplify the development and deployment process of both simple and complex software projects. Especially in web development (though not limited to that), Docker can really take you to the next level!",
             isFree = false,
-            price = "139K",
-            banner = "https://developer.android.com/static/codelabs/jetpack-compose-animation/img/5bb2e531a22c7de0.png?hl=id",
-            rating = "4.9 (409)",
-            mentor = "Deb",
-            category = "Development",
-            isFlashSale = true
-        ),
-        CourseModel(
-            id = 3,
-            title = "Full-Stack JavaScript Developer 2021: Website Top Up Voucher Game",
-            sortDesc = "MERN Stack adalah pengembangan website dari Front-End sampai Back-End dengan memakai satu bahasa pemrograman yaitu Javascript.",
-            desc = "",
-            isFree = false,
-            price = "349K",
-            banner = "https://buildwithangga.com/storage/assets/thumbnails/thumbnail%20kelas%20premium%20Full-Stack%20JavaScript%20Developer%202021%20buildwith%20angga%202%20(1).png",
-            rating = "4.9 (1394)",
-            mentor = "Angga",
+            price = "129k",
+            banner = "https://celvine.sirv.com/esail/bec1043d5a9ef77e413f3872a23f6958.webp",
+            rating = "4.7 (14k)",
+            Captain = CaptainModel(
+                Name = "Maximilian Schwarzmüller",
+                Job = "Online Education",
+                Image = "https://img-c.udemycdn.com/user/200_H/31926668_94e7_6.jpg"
+            ),
             category = "Development",
             isPopular = true,
             isFlashSale = true
         ),
-        CourseModel(
-            id = 4,
-            title = "UI/UX Design dengan figma",
-            sortDesc = "MERN Stack adalah pengembangan website dari Front-End sampai Back-End dengan memakai satu bahasa pemrograman yaitu Javascript.",
-            desc = "",
-            isFree = false,
-            price = "452K",
-            banner = "https://celvine.sirv.com/esail/original-c4e13a3f961e127594d8cd436cd03083.webp",
-            rating = "4.8 (1001)",
-            mentor = "Anvarov Bekzod",
-            category = "Design UI/UX",
-            isPopular = true,
-            isFlashSale = false
-        ),
-        CourseModel(
-            id = 5,
-            title = "Learn Flutter UI/UX: Fashion using GetX",
-            sortDesc = "MERN Stack adalah pengembangan website dari Front-End sampai Back-End dengan memakai satu bahasa pemrograman yaitu Javascript.",
-            desc = "",
-            isFree = false,
-            price = "339",
-            banner = "https://celvine.sirv.com/esail/S1.png?w=4318&scale.option=fill&format=webp&q=76",
-            rating = "4.8 (1023)",
-            mentor = "Celvine & Deb",
-            category = "Development",
-            isPopular = true,
-            isFlashSale = true
-        )
     )
 }

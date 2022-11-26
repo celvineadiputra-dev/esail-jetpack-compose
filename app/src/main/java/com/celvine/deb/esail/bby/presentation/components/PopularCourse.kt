@@ -10,8 +10,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,28 +21,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CourseModel
-import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
+import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.Star
-
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
 
 
 @Composable
 fun PopularCourse(
-    viewModel: CoursesViewModel = viewModel(
-        factory = ViewModelFactory(
-            CoursesRepository()
-        )
-    )
+    courses: List<CourseModel>,
+    navController: NavController
 ) {
-    val courses by viewModel.courses.collectAsState()
     Column {
         Row(
             modifier = Modifier
@@ -66,10 +57,10 @@ fun PopularCourse(
             BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
                 LazyRow(modifier = Modifier.fillMaxWidth(), state = rememberLazyListState()) {
                     items(courses, key = { it.id }) { item ->
-                        if (item.isPopular) {
-                            CardCourse(item = item)
-                            Spacer(modifier = Modifier.width(10.dp))
-                        }
+                        CardCourse(item = item, onClick = {
+                            navController.navigate(Routes.Detail.createRoute(item.id))
+                        })
+                        Spacer(modifier = Modifier.width(10.dp))
                     }
                 }
             }
@@ -79,7 +70,7 @@ fun PopularCourse(
 
 
 @Composable
-fun CardCourse(item: CourseModel) {
+fun CardCourse(item: CourseModel, onClick: (Int) -> Unit) {
     Box(
         modifier = Modifier
             .width(280.dp)
@@ -131,10 +122,12 @@ fun CardCourse(item: CourseModel) {
                 )
             )
             Spacer(modifier = Modifier.height(5.dp))
-            Mentor(mentor = item.mentor)
+            Mentor(mentor = item.Captain.Name)
             Spacer(modifier = Modifier.height(5.dp))
             Button(shape = RoundedCornerShape(12.dp),
-                elevation = ButtonDefaults.buttonElevation(0.dp), onClick = { /*TODO*/ }) {
+                elevation = ButtonDefaults.buttonElevation(0.dp), onClick = {
+                    onClick(item.id)
+                }) {
                 Text(
                     text = "Join Now",
                     style = MaterialTheme.typography.bodySmall.copy(

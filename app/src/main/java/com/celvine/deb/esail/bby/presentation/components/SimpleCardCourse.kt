@@ -15,24 +15,24 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.celvine.deb.esail.bby.data.sources.CourseData
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.common.theme.White
+import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.Star
 
 
 @Composable
-fun SimpleCardCourse(item: CourseModel, onClick: () -> Unit) {
+fun SimpleCardCourse(item: CourseModel, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                onClick()
+                navController.navigate(Routes.Detail.createRoute(item.id))
             },
         elevation = CardDefaults.cardElevation(defaultElevation = 0.4.dp),
         colors = CardDefaults.cardColors(containerColor = White)
@@ -67,7 +67,7 @@ fun SimpleCardCourse(item: CourseModel, onClick: () -> Unit) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Mentor(mentor = item.mentor)
+                    Mentor(mentor = item.Captain.Name)
                     Star(rating = item.rating)
                 }
                 Spacer(modifier = Modifier.height(5.dp))

@@ -1,4 +1,4 @@
-package com.celvine.deb.esail.bby.ui.components
+package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

@@ -14,9 +14,9 @@ import com.celvine.deb.esail.bby.common.theme.Shapes
 import com.celvine.deb.esail.bby.common.theme.White
 
 @Composable
-fun PrimaryButton(text: String, onClick: () -> Unit) {
+fun PrimaryButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
     Button(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(63.dp),
         onClick = onClick,
@@ -29,11 +29,4 @@ fun PrimaryButton(text: String, onClick: () -> Unit) {
             style = ButtonStyle.copy(color = White, fontSize = 19.sp)
         )
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PrimaryButtonPreview() {
-    PrimaryButton(text = "HELLO", onClick = {})
 }

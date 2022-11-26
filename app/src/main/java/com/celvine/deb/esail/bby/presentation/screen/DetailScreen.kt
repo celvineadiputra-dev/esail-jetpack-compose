@@ -1,12 +1,12 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,32 +20,59 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
+import com.celvine.deb.esail.bby.data.model.CaptainModel
+import com.celvine.deb.esail.bby.data.model.CourseModel
+import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
+import com.celvine.deb.esail.bby.di.Injection
+import com.celvine.deb.esail.bby.presentation.components.ExpandedText
 import com.celvine.deb.esail.bby.presentation.components.Price
 import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
 import com.celvine.deb.esail.bby.presentation.components.PrimaryOutlineButton
 
 @Composable
-fun DetailScreen(navController: NavController) {
+fun DetailScreen(
+    navController: NavController,
+    id: Int,
+    viewModel: CoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelCoursesFactory(
+            Injection.provideCourseRepository()
+        )
+    )
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(color = White2)
     ) {
         item {
-            BannerCourse()
-            DetailCourse()
-            Captain()
+            viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
+                when (uiState) {
+                    is UiState.Loading -> {
+                        viewModel.getById(id = id)
+                    }
+                    is UiState.Success -> {
+                        BannerCourse(image = uiState.data[0].banner)
+                        DetailCourse(detail = uiState.data[0])
+                        Captain(captain = uiState.data[0].Captain)
+                    }
+                    is UiState.Error -> {
+
+                    }
+                }
+            }
         }
     }
 }
 
 @Composable
-fun BannerCourse() {
+fun BannerCourse(image: String) {
     Box {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data("https://buildwithangga.com/storage/assets/thumbnails/UI%20Styleguide%20With%20Figma%201.jpeg")
+                .data(image)
                 .crossfade(true).build(),
             contentDescription = "Image Profile",
             contentScale = ContentScale.Crop,
@@ -89,9 +116,9 @@ fun BannerCourse() {
 }
 
 @Composable
-fun DetailCourse() {
+fun DetailCourse(detail: CourseModel) {
     Card(
-        modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp),
+        modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
         colors = CardDefaults.cardColors(containerColor = White)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
@@ -101,7 +128,7 @@ fun DetailCourse() {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Development", style = MaterialTheme.typography.labelMedium.copy(
+                    text = detail.category, style = MaterialTheme.typography.labelMedium.copy(
                         color = MaximumYellowRed,
                         fontWeight = FontWeight.SemiBold, fontSize = 12.sp
                     )
@@ -116,7 +143,7 @@ fun DetailCourse() {
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(
-                        text = "4.9",
+                        text = detail.rating,
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = Dark,
                             fontWeight = FontWeight.SemiBold, fontSize = 12.sp
@@ -126,7 +153,7 @@ fun DetailCourse() {
             }
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Full-Stack JavaScript Developer 2021: Website Top Up Voucher Game",
+                text = detail.title,
                 style = MaterialTheme.typography.titleMedium.copy(
                     color = Dark,
                     fontSize = 13.sp,
@@ -147,16 +174,9 @@ fun DetailCourse() {
                 Price(isFree = false, price = "132K")
             }
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = "MERN Stack adalah pengembangan website dari Front-End sampai Back-End dengan memakai satu bahasa pemrograman yaitu Javascript.",
-                style = MaterialTheme.typography.bodySmall.copy(
-                    color = Dark,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal
-                )
-            )
+            ExpandedText(text = detail.desc)
             Spacer(modifier = Modifier.height(12.dp))
-            PrimaryButton(text = "Enroll Now", onClick = {})
+            PrimaryButton(modifier = Modifier.height(55.dp), text = "Enroll Now", onClick = {})
             Spacer(modifier = Modifier.height(6.dp))
             Row(modifier = Modifier.fillMaxWidth()) {
                 PrimaryOutlineButton(modifier = Modifier.weight(1f), label = "Add to cart")
@@ -192,7 +212,7 @@ fun Info(label: String, icon: Int) {
 }
 
 @Composable
-fun Captain() {
+fun Captain(captain: CaptainModel) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -211,7 +231,7 @@ fun Captain() {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data("https://avatars.githubusercontent.com/u/69514214?v=4")
+                        .data(captain.Image)
                         .crossfade(true)
                         .build(),
                     contentDescription = "Image Profile",
@@ -224,14 +244,14 @@ fun Captain() {
                 Spacer(modifier = Modifier.width(10.dp))
                 Column() {
                     Text(
-                        text = "Debby Falensya",
+                        text = captain.Name,
                         style = MaterialTheme.typography.labelMedium.copy(
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 13.sp
                         )
                     )
                     Text(
-                        text = "Mandarin Teacher",
+                        text = captain.Job,
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontWeight = FontWeight.Normal,
                             fontSize = 10.sp

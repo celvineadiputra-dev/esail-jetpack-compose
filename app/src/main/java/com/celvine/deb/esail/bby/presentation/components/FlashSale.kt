@@ -5,8 +5,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -14,21 +12,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
-import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
-import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelFactory
+import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
 fun FlashSale(
     navController: NavController,
-    viewModel: CoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = ViewModelFactory(
-            CoursesRepository()
-        )
-    )
+    courses: List<CourseModel>
 ) {
-    val courses by viewModel.courses.collectAsState()
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -46,9 +37,7 @@ fun FlashSale(
         Spacer(modifier = Modifier.height(10.dp))
         courses.forEachIndexed { _, item ->
             if (item.isFlashSale) {
-                SimpleCardCourse(item = item, onClick = {
-                    navController.navigate(Routes.Detail.routes)
-                })
+                SimpleCardCourse(item = item, navController = navController)
                 Spacer(modifier = Modifier.height(10.dp))
             }
         }

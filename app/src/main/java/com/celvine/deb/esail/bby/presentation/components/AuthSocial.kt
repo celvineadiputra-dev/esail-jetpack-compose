@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.SoftGray
@@ -43,7 +42,10 @@ fun AuthSocial() {
                     .height(24.dp)
             )
             Spacer(modifier = Modifier.width(7.dp))
-            Text(text = "Google", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium))
+            Text(
+                text = "Google",
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium)
+            )
         }
 
         Spacer(modifier = Modifier.width(5.dp))
@@ -64,7 +66,10 @@ fun AuthSocial() {
                     .height(24.dp)
             )
             Spacer(modifier = Modifier.width(7.dp))
-            Text(text = "Facebook", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium))
+            Text(
+                text = "Facebook",
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium)
+            )
         }
     }
 }

@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.data.model.CourseModel
-import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
 fun FlashSale(

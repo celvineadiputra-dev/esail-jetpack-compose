@@ -2,7 +2,6 @@ package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -14,17 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.Dark
-import com.celvine.deb.esail.bby.common.theme.Ruby
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.common.theme.White
 import com.celvine.deb.esail.bby.data.model.ContentModel
 import com.celvine.deb.esail.bby.data.model.SectionModel
-import com.celvine.deb.esail.bby.data.sources.CourseContentData
 
 @Composable
 fun Accordion(itemModel: ContentModel, onClickItem: () -> Unit, expanded: Boolean) {

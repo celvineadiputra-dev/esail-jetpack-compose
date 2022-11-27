@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.common.theme.White
+import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.Star
 

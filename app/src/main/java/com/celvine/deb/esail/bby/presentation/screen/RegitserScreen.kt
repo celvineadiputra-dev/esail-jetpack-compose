@@ -13,13 +13,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.celvine.deb.esail.bby.route.Routes
+import com.celvine.deb.esail.bby.common.theme.DodgerBlue
+import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.presentation.components.AuthSocial
 import com.celvine.deb.esail.bby.presentation.components.PasswordTextField
 import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
+import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
-import com.celvine.deb.esail.bby.common.theme.DodgerBlue
-import com.celvine.deb.esail.bby.common.theme.SoftGray2
 
 @Composable
 fun RegisterScreen(navController: NavController) {

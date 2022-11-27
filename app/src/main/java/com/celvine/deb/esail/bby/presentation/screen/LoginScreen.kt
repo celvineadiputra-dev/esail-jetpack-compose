@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.common.theme.*
-import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.presentation.components.AuthSocial
 import com.celvine.deb.esail.bby.presentation.components.PasswordTextField
 import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
+import com.celvine.deb.esail.bby.route.Routes
 import com.celvine.deb.esail.bby.ui.components.PrimaryTextField
 import kotlin.reflect.KFunction1
 

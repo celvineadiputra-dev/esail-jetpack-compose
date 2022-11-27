@@ -2,7 +2,10 @@ package com.celvine.deb.esail.bby.presentation.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -10,12 +13,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.celvine.deb.esail.bby.route.NavigationItem
 import com.celvine.deb.esail.bby.common.theme.DodgerBlue
 import com.celvine.deb.esail.bby.common.theme.DodgerBlueShade
 import com.celvine.deb.esail.bby.common.theme.IceBlue
 import com.celvine.deb.esail.bby.common.theme.White
-import com.celvine.deb.esail.bby.route.Routes
+import com.celvine.deb.esail.bby.route.NavigationItem
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {

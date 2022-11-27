@@ -3,7 +3,6 @@ package com.celvine.deb.esail.bby.data.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.celvine.deb.esail.bby.data.repositories.ContentRepository
-import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
 
 class ViewModelContentFactory(private val repository: ContentRepository) :
     ViewModelProvider.NewInstanceFactory() {

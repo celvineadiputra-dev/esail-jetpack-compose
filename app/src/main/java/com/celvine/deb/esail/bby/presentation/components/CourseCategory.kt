@@ -17,9 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
-import com.celvine.deb.esail.bby.data.sources.CategoryCourseData
 import com.celvine.deb.esail.bby.common.theme.Dark
 import com.celvine.deb.esail.bby.common.theme.White
+import com.celvine.deb.esail.bby.data.sources.CategoryCourseData
 
 @Composable
 fun CourseCategory() {

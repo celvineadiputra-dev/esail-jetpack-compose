@@ -1,10 +1,8 @@
 package com.celvine.deb.esail.bby.data.repositories
 
-import android.util.Log
 import com.celvine.deb.esail.bby.data.model.WishlistModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
 
 class WishlistRepository {
     private val wishlist = mutableListOf<WishlistModel>()

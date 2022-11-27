@@ -10,20 +10,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.Dark
-import com.celvine.deb.esail.bby.common.theme.Ruby
 import com.celvine.deb.esail.bby.common.theme.White
 import com.celvine.deb.esail.bby.common.theme.White2
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.model.WishlistModel
-import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.data.viewmodels.*
+import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +47,7 @@ fun WishlistScreen(
                     viewModel.getAddedWishlist()
                 }
                 is UiState.Success -> {
-                    if(uiState.data.wishlist.isNotEmpty()){
+                    if (uiState.data.wishlist.isNotEmpty()) {
                         LazyColumn(
                             modifier = Modifier
                                 .background(color = White2)

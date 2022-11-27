@@ -6,7 +6,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -51,7 +50,9 @@ fun SearchField(
         ),
         leadingIcon = {
             Icon(
-                modifier = Modifier.width(24.dp).height(24.dp),
+                modifier = Modifier
+                    .width(24.dp)
+                    .height(24.dp),
                 painter = painterResource(id = R.drawable.search_icon),
                 contentDescription = "Search Icon"
             )

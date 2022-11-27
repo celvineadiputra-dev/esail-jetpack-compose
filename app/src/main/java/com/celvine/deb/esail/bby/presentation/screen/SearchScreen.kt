@@ -14,17 +14,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.celvine.deb.esail.bby.common.UiState
-import com.celvine.deb.esail.bby.presentation.components.SearchField
-import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.common.theme.White2
 import com.celvine.deb.esail.bby.data.viewmodels.CoursesViewModel
 import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
 import com.celvine.deb.esail.bby.di.Injection
+import com.celvine.deb.esail.bby.presentation.components.SearchField
+import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 
 
 @Composable

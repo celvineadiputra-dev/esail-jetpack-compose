@@ -18,7 +18,6 @@ import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCoursesFactory
 import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.*
 import com.celvine.deb.esail.bby.route.Routes
-import com.celvine.deb.esail.bby.presentation.components.BannerDiscount
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

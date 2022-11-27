@@ -29,6 +29,7 @@ class CoursesRepository {
     fun getFlashSale(): Flow<List<CourseModel>> {
         return flowOf(CourseData.data).map { item -> item.filter { it.isFlashSale } }
     }
+
     companion object {
         @Volatile
         private var instance: CoursesRepository? = null;

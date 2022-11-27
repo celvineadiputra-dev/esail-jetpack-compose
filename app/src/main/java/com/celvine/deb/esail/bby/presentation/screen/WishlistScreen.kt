@@ -1,30 +1,30 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.UiState
-import com.celvine.deb.esail.bby.common.theme.Dark
-import com.celvine.deb.esail.bby.common.theme.White
 import com.celvine.deb.esail.bby.common.theme.White2
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.model.WishlistModel
-import com.celvine.deb.esail.bby.data.viewmodels.*
+import com.celvine.deb.esail.bby.data.viewmodels.DetailViewModel
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelDetailFactory
+import com.celvine.deb.esail.bby.data.viewmodels.ViewModelWishListFactory
+import com.celvine.deb.esail.bby.data.viewmodels.WishlistViewModel
 import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
+import com.celvine.deb.esail.bby.presentation.components.TopBar
+import com.celvine.deb.esail.bby.route.Routes
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WishlistScreen(
     navController: NavController,
@@ -40,7 +40,9 @@ fun WishlistScreen(
     ),
 ) {
     Column {
-        TopBar()
+        TopBar(title = "Wishlist", icon = R.drawable.cart_shopping, onClick = {
+            navController.navigate(Routes.Cart.routes)
+        })
         viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
             when (uiState) {
                 is UiState.Loading -> {
@@ -73,35 +75,6 @@ fun WishlistScreen(
 
     }
 }
-
-@Composable
-fun TopBar() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(color = White)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = "Wishlist",
-            style = MaterialTheme.typography.labelMedium.copy(
-                color = Dark,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        )
-        IconButton(
-            modifier = Modifier.width(18.dp), onClick = { /*TODO*/ }) {
-            Icon(
-                painter = painterResource(id = R.drawable.cart_shopping),
-                contentDescription = "Cart", tint = Dark
-            )
-        }
-    }
-}
-
 
 @Composable
 fun WishListItem(

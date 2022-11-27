@@ -8,6 +8,7 @@ sealed class Routes(val routes: String) {
     object Search : Routes("search")
     object Profile : Routes("profile")
     object Wishlist : Routes("wishlist")
+    object Cart : Routes("cart")
     object Detail : Routes("detail/{id}") {
         fun createRoute(id: Int) = "detail/$id"
     }

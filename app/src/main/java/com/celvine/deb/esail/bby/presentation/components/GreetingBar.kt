@@ -12,12 +12,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.Dark
 import com.celvine.deb.esail.bby.common.theme.Transparant
+import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
-fun GreetingBar() {
+fun GreetingBar(navController: NavController) {
     val interactionSource = remember { MutableInteractionSource() }
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -38,7 +40,9 @@ fun GreetingBar() {
             )
         }
         FilledIconButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate(Routes.Cart.routes)
+            },
             colors = IconButtonDefaults.filledIconButtonColors(containerColor = Transparant)
         ) {
             Icon(
@@ -48,10 +52,4 @@ fun GreetingBar() {
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingBarPreview() {
-    GreetingBar()
 }

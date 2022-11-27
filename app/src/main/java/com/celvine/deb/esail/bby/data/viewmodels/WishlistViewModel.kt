@@ -15,7 +15,6 @@ class WishlistViewModel(private val repository: WishlistRepository) : ViewModel(
     val uiState: StateFlow<UiState<WishlistState>>
         get() = _uiState
 
-
     private val _inWishlist: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     val inWishlist: StateFlow<Boolean> get() = _inWishlist

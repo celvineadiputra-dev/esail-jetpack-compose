@@ -47,6 +47,11 @@ fun DetailScreen(
         factory = ViewModelDetailFactory(
             Injection.provideDetailRepository()
         )
+    ),
+    cartViewModel: CartViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelCartListFactory(
+            Injection.provideCartRepository()
+        )
     )
 ) {
     LazyColumn(
@@ -64,6 +69,7 @@ fun DetailScreen(
                         BannerCourse(image = uiState.data.banner)
                         DetailCourse(
                             wishListViewModel = wishListViewModel,
+                            cartViewModel = cartViewModel,
                             detail = uiState.data
                         )
                         Captain(captain = uiState.data.Captain)
@@ -127,9 +133,15 @@ fun BannerCourse(image: String) {
 }
 
 @Composable
-fun DetailCourse(wishListViewModel: WishlistViewModel, detail: CourseModel) {
+fun DetailCourse(
+    wishListViewModel: WishlistViewModel,
+    cartViewModel: CartViewModel,
+    detail: CourseModel
+) {
     wishListViewModel.isAdded(detail.id)
+    cartViewModel.isAdded(detail.id)
     val isWishlist by wishListViewModel.inWishlist.collectAsState()
+    val isCartList by cartViewModel.inCartList.collectAsState()
     Card(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
         colors = CardDefaults.cardColors(containerColor = White)
@@ -194,7 +206,14 @@ fun DetailCourse(wishListViewModel: WishlistViewModel, detail: CourseModel) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 PrimaryOutlineButton(
                     modifier = Modifier.weight(1f),
-                    label = "Add to cart"
+                    label = if (isCartList) "Remove" else "Add to cart",
+                    onClick = {
+                        if (isCartList) {
+                            cartViewModel.removeFromCartList(detail.id)
+                        } else {
+                            cartViewModel.addToCartList(detail.id)
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.width(5.dp))
                 PrimaryOutlineButton(modifier = Modifier.weight(1f),

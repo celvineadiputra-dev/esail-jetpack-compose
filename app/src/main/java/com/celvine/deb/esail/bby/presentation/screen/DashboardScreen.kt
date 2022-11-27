@@ -23,7 +23,7 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
     val currentRoute = navBackStackEntry?.destination?.route
 
     Scaffold(bottomBar = {
-        if (currentRoute != Routes.Detail.routes) {
+        if (currentRoute != Routes.Detail.routes && currentRoute != Routes.Cart.routes) {
             BottomNavigationBar(navController)
         }
     }) { paddingValues ->
@@ -40,6 +40,9 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
             }
             composable(Routes.Wishlist.routes) {
                 WishlistScreen(navController = navController)
+            }
+            composable(Routes.Cart.routes) {
+                CartScreen(navController = navController)
             }
             composable(
                 Routes.Detail.routes,

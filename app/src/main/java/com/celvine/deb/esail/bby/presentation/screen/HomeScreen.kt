@@ -46,7 +46,7 @@ fun HomeScreen(
                     modifier = Modifier
                         .padding(16.dp)
                 ) {
-                    GreetingBar()
+                    GreetingBar(navController = navController)
                     Spacer(modifier = Modifier.height(15.dp))
                     SearchField("Jetpack Compose Beginner", enable = false, onClick = {
                         navController.navigate(Routes.Search.routes) {

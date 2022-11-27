@@ -1,5 +1,6 @@
 package com.celvine.deb.esail.bby.data.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.celvine.deb.esail.bby.common.UiState
@@ -15,6 +16,11 @@ class WishlistViewModel(private val repository: WishlistRepository) : ViewModel(
     val uiState: StateFlow<UiState<WishlistState>>
         get() = _uiState
 
+
+    private val _inWishlist: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    val inWishlist: StateFlow<Boolean> get() = _inWishlist
+
     fun getAddedWishlist() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
@@ -27,6 +33,18 @@ class WishlistViewModel(private val repository: WishlistRepository) : ViewModel(
     fun addToWishlist(id: Int) {
         viewModelScope.launch {
             repository.addToWishlist(id = id)
+            _inWishlist.value = true
         }
+    }
+
+    fun removeFromWishlist(id: Int) {
+        viewModelScope.launch {
+            repository.removeFromWishlist(id = id)
+            _inWishlist.value = false
+        }
+    }
+
+    fun isAdded(id: Int) {
+        _inWishlist.value = repository.isAdded(id = id)
     }
 }

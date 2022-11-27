@@ -2,6 +2,7 @@ package com.celvine.deb.esail.bby.di
 
 import com.celvine.deb.esail.bby.data.repositories.ContentRepository
 import com.celvine.deb.esail.bby.data.repositories.CoursesRepository
+import com.celvine.deb.esail.bby.data.repositories.DetailRepository
 import com.celvine.deb.esail.bby.data.repositories.WishlistRepository
 
 object Injection {
@@ -15,5 +16,9 @@ object Injection {
 
     fun provideWishlistRepository(): WishlistRepository {
         return WishlistRepository.getInstance()
+    }
+
+    fun provideDetailRepository(): DetailRepository {
+        return DetailRepository.getInstance()
     }
 }

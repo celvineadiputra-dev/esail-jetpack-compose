@@ -34,11 +34,6 @@ import com.celvine.deb.esail.bby.presentation.components.*
 fun DetailScreen(
     navController: NavController,
     id: Int,
-    viewModel: CoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = ViewModelCoursesFactory(
-            Injection.provideCourseRepository()
-        )
-    ),
     contentViewModel: ContentViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelContentFactory(
             Injection.provideContentRepository()
@@ -48,6 +43,11 @@ fun DetailScreen(
         factory = ViewModelWishListFactory(
             Injection.provideWishlistRepository()
         )
+    ),
+    detailViewModel: DetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelDetailFactory(
+            Injection.provideDetailRepository()
+        )
     )
 ) {
     LazyColumn(
@@ -56,19 +56,19 @@ fun DetailScreen(
             .background(color = White2)
     ) {
         item {
-            viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
+            detailViewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
-                        viewModel.getById(id = id)
+                        detailViewModel.getById(id = id)
                     }
                     is UiState.Success -> {
-                        BannerCourse(image = uiState.data[0].banner)
+                        BannerCourse(image = uiState.data.banner)
                         DetailCourse(
                             wishListViewModel = wishListViewModel,
-                            detail = uiState.data[0]
+                            detail = uiState.data
                         )
-                        Captain(captain = uiState.data[0].Captain)
-                        Content(id = uiState.data[0].id, contentViewModel = contentViewModel)
+                        Captain(captain = uiState.data.Captain)
+                        Content(id = uiState.data.id, contentViewModel = contentViewModel)
                     }
                     is UiState.Error -> {
 
@@ -129,6 +129,8 @@ fun BannerCourse(image: String) {
 
 @Composable
 fun DetailCourse(wishListViewModel: WishlistViewModel, detail: CourseModel) {
+    wishListViewModel.isAdded(detail.id)
+    val isWishlist by wishListViewModel.inWishlist.collectAsState()
     Card(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
         colors = CardDefaults.cardColors(containerColor = White)
@@ -196,9 +198,14 @@ fun DetailCourse(wishListViewModel: WishlistViewModel, detail: CourseModel) {
                     label = "Add to cart"
                 )
                 Spacer(modifier = Modifier.width(5.dp))
-                PrimaryOutlineButton(modifier = Modifier.weight(1f), label = "Add to wishlist",
+                PrimaryOutlineButton(modifier = Modifier.weight(1f),
+                    label = if (isWishlist) "Remove" else "Add to wishlist",
                     onClick = {
-                        wishListViewModel.addToWishlist(detail.id)
+                        if (isWishlist) {
+                            wishListViewModel.removeFromWishlist(detail.id)
+                        } else {
+                            wishListViewModel.addToWishlist(detail.id)
+                        }
                     })
             }
         }

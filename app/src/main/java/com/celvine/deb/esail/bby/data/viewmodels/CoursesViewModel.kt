@@ -46,16 +46,6 @@ class CoursesViewModel(private val repository: CoursesRepository) : ViewModel() 
         }
     }
 
-    fun getById(id: Int) {
-        viewModelScope.launch {
-            repository.getById(id = id).catch {
-                _uiState.value = UiState.Error(it.message.toString())
-            }.collect { result ->
-                _uiState.value = UiState.Success(result)
-            }
-        }
-    }
-
     fun removeQuery() {
         _query.value = ""
         this.getAll()

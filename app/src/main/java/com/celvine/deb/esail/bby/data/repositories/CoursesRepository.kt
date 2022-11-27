@@ -29,11 +29,6 @@ class CoursesRepository {
     fun getFlashSale(): Flow<List<CourseModel>> {
         return flowOf(CourseData.data).map { item -> item.filter { it.isFlashSale } }
     }
-
-    fun getById(id: Int): Flow<List<CourseModel>> {
-        return flowOf(CourseData.data).map { item -> item.filter { it.id == id } }
-    }
-
     companion object {
         @Volatile
         private var instance: CoursesRepository? = null;

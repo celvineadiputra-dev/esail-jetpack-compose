@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.FormatPrice
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.route.Routes
@@ -120,7 +121,7 @@ fun CardCourse(item: CourseModel, onClick: (Int) -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Price(price = item.price, isFree = item.isFree)
+                Price(price = FormatPrice(item.price), isFree = item.isFree)
                 Star(rating = item.rating)
             }
             Spacer(modifier = Modifier.height(10.dp))

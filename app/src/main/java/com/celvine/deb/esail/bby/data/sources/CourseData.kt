@@ -17,7 +17,7 @@ object CourseData {
                     "\n" +
                     "Because they significantly simplify the development and deployment process of both simple and complex software projects. Especially in web development (though not limited to that), Docker can really take you to the next level!",
             isFree = false,
-            price = "129k",
+            price = 129000,
             banner = "https://celvine.sirv.com/esail/bec1043d5a9ef77e413f3872a23f6958.webp",
             rating = "4.7 (14k)",
             Captain = CaptainModel(
@@ -55,7 +55,7 @@ object CourseData {
                     "\n" +
                     "Materi akan selalu di update secara berkala, dan ketika materi di update, harga course pun akan diupdate dengan harga baru. Jadi pastikan untuk secepatnya membeli course ini, makin cepat, makin murah harga pembelian course ini.",
             isFree = false,
-            price = "340k",
+            price = 340000,
             banner = "https://celvine.sirv.com/esail/RPA3.jpg",
             rating = "4.8 (2k)",
             Captain = CaptainModel(
@@ -105,7 +105,7 @@ object CourseData {
                     "\n" +
                     "And finally this course will be constantly updated with new videos whenever needed. Whenever we find a bug in our app, then I'm going to record a video about it and we are going to fix it together. Plus you'll be in contact with me throughout this whole course, and you can always ask me a question related to this course and even suggest some code cleanup for the project if  you are skilled enough to find it.",
             isFree = false,
-            price = "700k",
+            price = 700000,
             banner = "https://celvine.sirv.com/esail/50af8cfcb065f268b328e135b92fa2d9.webp",
             rating = "4.5 (399)",
             Captain = CaptainModel(
@@ -118,6 +118,130 @@ object CourseData {
             isFlashSale = true,
             totalTime = "9h 16m",
             totalVideo = 62
+        ),
+        CourseModel(
+            id = 4,
+            title = "Menjadi Android Developer Expert",
+            sortDesc = "Saatnya menjadi Android Expert dengan belajar Clean Architecture, Reactive, Dependency Injection, Modularization, Performance, dan Security.",
+            desc = "Perusahaan berlomba membuat aplikasi Android agar dapat menjangkau pasar. Namun kesuksesan sebuah aplikasi terbentur kompetisi dan mahalnya biaya akuisisi user. Maka diperlukan aplikasi dengan performa tinggi supaya dapat bersaing dan tidak dihapus oleh user. Minimnya bug, keamanan, dan ukuran aplikasi adalah faktor lain yang perlu diperhatikan untuk kenyamanan user. Maka, pelajarilah di kelas ini cara membuat kode yang mudah diubah untuk mengikuti kebutuhan bisnis dan tidak rapuh ketika dikembangkan. \n" +
+                    "\n" +
+                    "Permintaan tinggi dari perusahaan untuk developer Android dengan ilmu expert karena minimnya kualitas developer di Indonesia.\n" +
+                    "Materi yang diajarkan di kelas ini merupakan best-practice langsung dari industri sehingga dipastikan berguna untuk kebutuhan sehari-hari.\n" +
+                    "Kemudahan untuk menyesuaikan aplikasi Anda dengan kebutuhan perusahaan melalui arsitektur kuat yang mudah dipelihara.\n" +
+                    "Beberapa keahlian sudah menjadi prasyarat minimal untuk kerja di perusahaan teknologi seperti Reactive Programming dan Dependency Injection.\n" +
+                    "Performance dan Security adalah hal yang harus Anda perhatikan jika ingin membuat aplikasi yang dipakai jutaan user.",
+            isFree = false,
+            price = 1500000,
+            banner = "https://celvine.sirv.com/esail/99c9da926ceea22a1240dc43f2a6e683.webp",
+            rating = "4.8 (3432)",
+            Captain = CaptainModel(
+                Name = "Dicoding",
+                Job = "Online Academy",
+                Image = "https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/new-ui-logo.png"
+            ),
+            category = "Development",
+            isPopular = true,
+            isFlashSale = false,
+            totalTime = "90h",
+            totalVideo = 0
+        ),
+        CourseModel(
+            id = 5,
+            title = "UI Design : Grid System dengan Figma",
+            sortDesc = "Pada kelas kali ini kita akan bahas tuntas tentang pengertian dan juga penggunaan grid system pada design website menggunakan software Figma.com",
+            desc = "Dalam membangun sebuah website dengan design yang menarik dan juga professional maka peran grid system sangatlah penting untuk mencapai akan hal-hal tersebut. Grid system memiliki beberapa manfaat yang salah satunya adalah untuk mempermudah proses kerja sama antara designer dan juga developer.\n" +
+                    "\n" +
+                    "Pada kelas kali ini kita akan bahas tuntas tentang pengertian dan juga penggunaan grid system pada design website menggunakan software Figma.com\n" +
+                    "\n" +
+                    "Kelas ini sangat cocok sekali apabila saat ini kita masih di tahap pemula, karena jika tidak kita pelajari sedari sekarang maka khawatir kedepannya hasil design kita tidak dapat diimplementasikan oleh developer dan ditolak oleh klien. Silakan bergabung dan kami akan tunggu di kelas.",
+            isFree = true,
+            price = 0,
+            banner = "https://buildwithangga.com/storage/assets/thumbnails/Thumbnail%20Kelas%20Grid.jpg",
+            rating = "4.8 (3432)",
+            Captain = CaptainModel(
+                Name = "BuildWithAngga",
+                Job = "Online Academy",
+                Image = "https://celvine.sirv.com/esail/logo_bwa_new.webp"
+            ),
+            category = "Design",
+            isPopular = false,
+            isFlashSale = false,
+            totalTime = "24m",
+            totalVideo = 8
+        ),
+        CourseModel(
+            id = 6,
+            title = "Flutter Mobile Development: Food Shop App",
+            sortDesc = "Mempelajari penerapan slicing UI design dan integrasi data dengan API",
+            desc = "Mengimplementasikan fitur E-Commerce untuk Food Shop App seperti fitur transaksi online menggunakan techstack Flutter, PHP, serta MySQL. Mempelajari penerapan slicing UI design dan integrasi data dengan API.",
+            isFree = false,
+            price = 700000,
+            banner = "https://celvine.sirv.com/esail/202208101249-Thumbnail%20Flutter%20Mobile%20Development%20Food%20Shop%20App-min.png",
+            rating = "4.8 (120)",
+            Captain = CaptainModel(
+                Name = "BuildWithAngga",
+                Job = "Online Academy",
+                Image = "https://celvine.sirv.com/esail/logo_bwa_new.webp"
+            ),
+            category = "Development",
+            isPopular = false,
+            isFlashSale = true,
+            totalTime = "230h 10m",
+            totalVideo = 15
+        ),
+        CourseModel(
+            id = 7,
+            title = "Complete Blender Creator: Learn 3D Modelling for Beginners",
+            sortDesc = "Use Blender to Create Beautiful 3D models for Video Games, 3D Printing & More. Beginners Level Course",
+            desc = "This course is in the process of being completely remastered in Blender 3.2. Currently both the new and original content are in this course, once the remaster is complete students will be able to access the original 2.8 content in a separate archive course.\n" +
+                    "\n" +
+                    "Blender is a fantastic platform which enables you to make AAA-quality models which can be exported to any game engine, 3D printer, or other software. Here are some of the reasons why you want to learn Blender with this online tutorial...\n" +
+                    "\n" +
+                    "Create assets for video games.\n" +
+                    "\n" +
+                    "Make unique 3D printed gifts.\n" +
+                    "\n" +
+                    "Design your dream house, car, etc\n" +
+                    "\n" +
+                    "Express yourself through 3D artwork.\n" +
+                    "\n" +
+                    "Learn how to create 3D Models and Assets for games using Blender, the free-to-use 3D production suite. We start super simple so you'll be ok with little or no experience. With our online tutorials, you'll be amazed what you can achieve.\n" +
+                    "\n" +
+                    "The GameDevtv team has created some of the world's most popular online game development training courses. This Blender course has been enjoyed by hundreds of thousands of students and, with more than 30,000 5 star reviews, is consistently ranked the #1 Blender course on Udemy in terms of rating and popularity. \n" +
+                    "\n" +
+                    "The course is project-based, so you will applying your new skills immediately to real 3D models. All the project files will be included, as well as additional references and resources - you'll never get stuck. There are talking-head videos, powerful diagrams, quality screencasts and more.\n" +
+                    "\n" +
+                    "For each of the models that you build you will follow this process... \n" +
+                    "\n" +
+                    "Be challenged to build the entire model yourself.\n" +
+                    "\n" +
+                    "Be shown step-by-step how to build it.\n" +
+                    "\n" +
+                    "Apply your knowledge regularly.\n" +
+                    "\n" +
+                    "Have a more specific focus? Check out our other Blender courses which focus on characters and environments. Want to bring your models to life in a video game engine? Check out our Complete Unity Developer 3D course. Just look for our green leaf logo - a sign of passion & quality.\n" +
+                    "\n" +
+                    "You will get full lifetime access for a single one-off fee. The creators are qualified and experienced with modelling and coding, so are able to explain complex concepts clearly, as well as entertain along the way. By the end of the course, you'll be very confident in the basics of 3D modelling and rendering, and hungry to learn more.\n" +
+                    "\n" +
+                    "If you're a complete beginner, we'll teach you all the modelling fundamentals you'll need. If you're an artist, we'll teach you to bring your assets to life. If you're a coder, we'll teach you modelling and design principles.\n" +
+                    "\n" +
+                    "Get plugged into our communities of amazing developers on Facebook (around 20k), in our own Community curated by our supportive and knowledgeable Teaching Assistants (17k views/day), and our student Discord chat group (10k live at any one time).\n" +
+                    "\n" +
+                    "Dive in now, you won't be disappointed!",
+            isFree = false,
+            price = 99000,
+            banner = "https://celvine.sirv.com/esail/7ce0a110dcdffe4758c2b7677b398dfa38db62ac%20(Medium).jpeg",
+            rating = "4.8 (120)",
+            Captain = CaptainModel(
+                Name = "Rick Davidson",
+                Job = "Helped More Than 1 Million Students",
+                Image = "https://img-b.udemycdn.com/user/200_H/24317920_c8a2_2.jpg"
+            ),
+            category = "Design",
+            isPopular = false,
+            isFlashSale = true,
+            totalTime = "13h",
+            totalVideo = 101
         ),
     )
 }

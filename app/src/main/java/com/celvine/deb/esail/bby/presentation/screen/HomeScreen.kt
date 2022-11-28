@@ -49,11 +49,7 @@ fun HomeScreen(
                     GreetingBar(navController = navController)
                     Spacer(modifier = Modifier.height(15.dp))
                     SearchField("Jetpack Compose Beginner", enable = false, onClick = {
-                        navController.navigate(Routes.Search.routes) {
-                            popUpTo(Routes.Home.routes) {
-                                inclusive = true
-                            }
-                        }
+                        navController.navigate(Routes.Search.routes)
                     }, value = "")
                     Spacer(modifier = Modifier.height(15.dp))
                     BannerDiscount()

@@ -209,9 +209,9 @@ fun DetailCourse(
                     label = if (isCartList) "Remove" else "Add to cart",
                     onClick = {
                         if (isCartList) {
-                            cartViewModel.removeFromCartList(detail.id)
+                            cartViewModel.removeFromCartList(detail.id, price = detail.price)
                         } else {
-                            cartViewModel.addToCartList(detail.id)
+                            cartViewModel.addToCartList(detail.id, price = detail.price)
                         }
                     }
                 )
@@ -285,7 +285,7 @@ fun Captain(captain: CaptainModel) {
                         .height(54.dp)
                 )
                 Spacer(modifier = Modifier.width(10.dp))
-                Column() {
+                Column {
                     Text(
                         text = captain.Name,
                         style = MaterialTheme.typography.labelMedium.copy(

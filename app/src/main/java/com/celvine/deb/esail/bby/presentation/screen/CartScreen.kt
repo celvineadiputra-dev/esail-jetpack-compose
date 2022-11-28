@@ -1,20 +1,21 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.FormatIDR
 import com.celvine.deb.esail.bby.common.UiState
-import com.celvine.deb.esail.bby.common.theme.Ruby
-import com.celvine.deb.esail.bby.common.theme.White2
+import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CartModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.viewmodels.CartViewModel
@@ -25,6 +26,7 @@ import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
 import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
 import com.celvine.deb.esail.bby.presentation.components.TopBar
+import com.celvine.deb.esail.bby.route.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,8 +45,13 @@ fun CartScreen(
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopBar(title = "Cart", icon = R.drawable.search_icon) },
-        bottomBar = { BottomCart() }, content = { paddingValues: PaddingValues ->
+        topBar = {
+            TopBar(title = "Cart", icon = R.drawable.search_icon, onClick = {
+                navController.navigate(Routes.Search.routes)
+            })
+        },
+        bottomBar = { BottomCart(viewModel = viewModel) },
+        content = { paddingValues: PaddingValues ->
             viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
@@ -55,10 +62,12 @@ fun CartScreen(
                             LazyColumn(
                                 modifier = Modifier
                                     .background(color = White2)
+                                    .fillMaxHeight()
                                     .padding(
                                         top = paddingValues.calculateTopPadding() + 5.dp,
                                         start = 16.dp,
-                                        end = 16.dp
+                                        end = 16.dp,
+                                        bottom = paddingValues.calculateBottomPadding()
                                     ),
                                 verticalArrangement = Arrangement.spacedBy(10.dp),
                             ) {
@@ -92,15 +101,101 @@ fun CartListItem(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun BottomCart() {
-    Row(
+fun BottomCart(viewModel: CartViewModel) {
+    viewModel.getCheckout()
+    val checkout = viewModel.checkout.collectAsState()
+    Column(
         modifier = Modifier
-            .background(color = Ruby)
+            .background(color = White)
             .fillMaxWidth()
             .padding(8.dp)
     ) {
-        PrimaryButton(text = "Checkout Order - Rp. 130.500", onClick = {})
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = White),
+            border = BorderStroke(2.dp, SolidColor(SoftGray))
+        ) {
+            Column(modifier = Modifier.padding(10.dp)) {
+                Text(
+                    text = "Price Detail",
+                    style = MaterialTheme.typography.labelMedium.copy(
+                        color = Dark,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(5.dp))
+
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Sub Total",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = SoftGray2,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        Text(
+                            text = "${FormatIDR(checkout.value.subTotal)}",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = SoftGray2,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Discount",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = SoftGray2,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        Text(
+                            text = "-${FormatIDR(checkout.value.discount)}",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = Ruby,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Total",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = SoftGray2,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        Text(
+                            text = "${FormatIDR(checkout.value.total)}",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = Green,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        PrimaryButton(text = "Checkout Order", onClick = {})
     }
 }

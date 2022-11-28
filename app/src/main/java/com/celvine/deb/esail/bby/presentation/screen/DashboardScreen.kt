@@ -23,7 +23,7 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
     val currentRoute = navBackStackEntry?.destination?.route
 
     Scaffold(bottomBar = {
-        if (currentRoute != Routes.Detail.routes && currentRoute != Routes.Cart.routes) {
+        if (currentRoute != Routes.Detail.routes && currentRoute != Routes.Cart.routes && currentRoute != Routes.Search.routes) {
             BottomNavigationBar(navController)
         }
     }) { paddingValues ->

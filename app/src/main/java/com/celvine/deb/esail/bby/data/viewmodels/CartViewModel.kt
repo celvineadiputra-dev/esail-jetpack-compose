@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.celvine.deb.esail.bby.common.CartState
 import com.celvine.deb.esail.bby.common.UiState
+import com.celvine.deb.esail.bby.data.model.CheckoutModel
 import com.celvine.deb.esail.bby.data.repositories.CartRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,6 +20,10 @@ class CartViewModel(private val repository: CartRepository) : ViewModel() {
 
     val inCartList: StateFlow<Boolean> get() = _inCartList
 
+    private val _checkout: MutableStateFlow<CheckoutModel> =
+        MutableStateFlow(CheckoutModel(subTotal = 0, total = 0, discount = 0))
+
+    val checkout: StateFlow<CheckoutModel> get() = _checkout
 
     fun getAddedCartList() {
         viewModelScope.launch {
@@ -29,21 +34,29 @@ class CartViewModel(private val repository: CartRepository) : ViewModel() {
         }
     }
 
-    fun addToCartList(id: Int) {
+    fun addToCartList(id: Int, price: Int) {
         viewModelScope.launch {
-            repository.addToCart(id = id)
+            repository.addToCart(id = id, price = price)
             _inCartList.value = true
         }
     }
 
-    fun removeFromCartList(id: Int) {
+    fun removeFromCartList(id: Int, price: Int) {
         viewModelScope.launch {
-            repository.removeFromCartList(id = id)
+            repository.removeFromCartList(id = id, price = price)
             _inCartList.value = false
         }
     }
 
     fun isAdded(id: Int) {
         _inCartList.value = repository.isAdded(id = id)
+    }
+
+    fun getCheckout() {
+        viewModelScope.launch {
+            repository.getCheckout().collect { item ->
+                _checkout.value = item[0]
+            }
+        }
     }
 }

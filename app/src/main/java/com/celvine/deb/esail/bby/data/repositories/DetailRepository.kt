@@ -12,7 +12,7 @@ class DetailRepository {
 
     companion object {
         @Volatile
-        private var instance: DetailRepository? = null;
+        private var instance: DetailRepository? = null
 
         fun getInstance(): DetailRepository = instance ?: synchronized(this) {
             DetailRepository().apply {

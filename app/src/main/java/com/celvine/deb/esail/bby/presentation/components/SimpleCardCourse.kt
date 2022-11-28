@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.celvine.deb.esail.bby.common.FormatPrice
 import com.celvine.deb.esail.bby.common.theme.White
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.route.Routes
@@ -71,7 +72,7 @@ fun SimpleCardCourse(item: CourseModel, navController: NavController) {
                     Star(rating = item.rating)
                 }
                 Spacer(modifier = Modifier.height(5.dp))
-                Price(isFree = item.isFree, price = item.price)
+                Price(isFree = item.isFree, price = FormatPrice(item.price))
             }
         }
     }

@@ -32,7 +32,7 @@ class CoursesRepository {
 
     companion object {
         @Volatile
-        private var instance: CoursesRepository? = null;
+        private var instance: CoursesRepository? = null
 
         fun getInstance(): CoursesRepository = instance ?: synchronized(this) {
             CoursesRepository().apply {

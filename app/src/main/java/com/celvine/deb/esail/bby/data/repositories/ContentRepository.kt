@@ -13,7 +13,7 @@ class ContentRepository {
 
     companion object {
         @Volatile
-        private var instance: ContentRepository? = null;
+        private var instance: ContentRepository? = null
 
         fun getInstance(): ContentRepository = instance ?: synchronized(this) {
             ContentRepository().apply {

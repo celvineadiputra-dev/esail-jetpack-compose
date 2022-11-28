@@ -6,7 +6,7 @@ data class CourseModel(
     val sortDesc: String,
     val desc: String,
     val isFree: Boolean = false,
-    val price: String = "0",
+    val price: Int = 0,
     val banner: String,
     val rating: String,
     val category: String,
@@ -14,5 +14,5 @@ data class CourseModel(
     val isPopular: Boolean = false,
     val Captain: CaptainModel,
     val totalVideo: Int,
-    val totalTime: String
+    val totalTime: String,
 )

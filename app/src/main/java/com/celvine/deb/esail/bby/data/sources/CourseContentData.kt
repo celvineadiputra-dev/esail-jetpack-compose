@@ -213,6 +213,142 @@ object CourseContentData {
             Sections = listOf<SectionModel>(
                 SectionModel(Id = 1, Time = "04:00", Title = "Final Word"),
             )
+        ),
+        ContentModel(
+            Id = 9,
+            CourseId = 4,
+            Title = "Persiapan Belajar",
+            TotalTime = "65m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "05:00", Title = "Persetujuan Hak Cipta"),
+                SectionModel(Id = 2, Time = "05:00", Title = "Pendahuluan"),
+                SectionModel(Id = 3, Time = "05:00", Title = "Prasyarat Kelas"),
+                SectionModel(Id = 4, Time = "05:00", Title = "Materi Android Developer Expert"),
+                SectionModel(Id = 5, Time = "10:00", Title = "Mekanisme Belajar"),
+                SectionModel(Id = 6, Time = "05:00", Title = "Forum Diskusi"),
+                SectionModel(Id = 7, Time = "05:00", Title = "Glasarium"),
+                SectionModel(Id = 8, Time = "05:00", Title = "Daftar Referensi"),
+            )
+        ),
+        ContentModel(
+            Id = 10,
+            CourseId = 4,
+            Title = "Clean Architecture",
+            TotalTime = "480m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "10:00", Title = "Pengenalan Clean Architecture"),
+                SectionModel(Id = 2, Time = "10:00", Title = "Teori Design Pattern"),
+                SectionModel(Id = 3, Time = "40:00", Title = "Creational Pattern"),
+                SectionModel(Id = 4, Time = "20:00", Title = "Structural Pattern"),
+                SectionModel(Id = 5, Time = "20:00", Title = "Behavioral Pattern"),
+                SectionModel(Id = 6, Time = "05:00", Title = "Knowledge Check Design Pattern"),
+                SectionModel(Id = 7, Time = "25:00", Title = "Teori Architectural Pattern"),
+                SectionModel(Id = 8, Time = "30:00", Title = "Teori Clean Architecture"),
+                SectionModel(Id = 9, Time = "90:00", Title = "Latihan Clean Architecture"),
+                SectionModel(Id = 10, Time = "35:00", Title = "Starter Project Aplikasi"),
+            )
+        ),
+        ContentModel(
+            Id = 11,
+            CourseId = 4,
+            Title = "Reactive Programming",
+            TotalTime = "570m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "40:00", Title = "Pengenalan Reactive Programming"),
+                SectionModel(
+                    Id = 2,
+                    Time = "05:00",
+                    Title = "Knowledge Check Reactive Programming"
+                ),
+                SectionModel(Id = 3, Time = "40:00", Title = "Creational Pattern"),
+                SectionModel(Id = 4, Time = "15:00", Title = "Library Reactive di Android"),
+            )
+        ),
+        ContentModel(
+            Id = 12,
+            CourseId = 5,
+            Title = "Introduction",
+            TotalTime = "9m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:00", Title = "Grid Introduction"),
+                SectionModel(Id = 2, Time = "03:00", Title = "Seberapa penting grid pada project")
+            )
+        ),
+        ContentModel(
+            Id = 13,
+            CourseId = 5,
+            Title = "Implementasi Grid Design",
+            TotalTime = "12m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:00", Title = "Getting Started Figma"),
+                SectionModel(Id = 2, Time = "03:00", Title = "Setting Grid pada Figma"),
+                SectionModel(Id = 3, Time = "03:00", Title = "UI Design Practice Part 1"),
+                SectionModel(Id = 4, Time = "03:00", Title = "UI Design Practice Part 2"),
+            )
+        ),
+        ContentModel(
+            Id = 14,
+            CourseId = 5,
+            Title = "Outro Kelas Grid with Figma",
+            TotalTime = "3m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:00", Title = "Kesimpulan"),
+            )
+        ),
+        ContentModel(
+            Id = 15,
+            CourseId = 6,
+            Title = "Pengenalan",
+            TotalTime = "60m 12d",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:00", Title = "Demo Project"),
+                SectionModel(Id = 2, Time = "60:12", Title = "Planing"),
+            )
+        ),
+        ContentModel(
+            Id = 16,
+            CourseId = 6,
+            Title = "Persiapan",
+            TotalTime = "2h 19m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:00", Title = "Setup"),
+                SectionModel(Id = 2, Time = "11:10", Title = "Login & Register"),
+            )
+        ),
+        ContentModel(
+            Id = 17,
+            CourseId = 6,
+            Title = "Executing",
+            TotalTime = "3h 10m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "180:10", Title = "Slicing kerangka kerja"),
+            )
+        ),
+        ContentModel(
+            Id = 18,
+            CourseId = 7,
+            Title = "Introduction & Setup",
+            TotalTime = "3h 10m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "01:48", Title = "Introduction blander"),
+                SectionModel(Id = 2, Time = "06:53", Title = "Moving arround the scene"),
+                SectionModel(Id = 3, Time = "10:54", Title = "Adding Objects"),
+                SectionModel(Id = 4, Time = "11:25", Title = "Viewport & Rendering"),
+            )
+        ),
+        ContentModel(
+            Id = 19,
+            CourseId = 7,
+            Title = "Modular Dungeon",
+            TotalTime = "2h 31m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "01:29", Title = "Introduction Modular Dungeon"),
+                SectionModel(Id = 2, Time = "09:49", Title = "Creating A Barrel"),
+                SectionModel(Id = 3, Time = "09:34", Title = "Creating A Crate"),
+                SectionModel(Id = 4, Time = "11:30", Title = "Creating A Pillar"),
+                SectionModel(Id = 5, Time = "09.38", Title = "Pillar Details"),
+                SectionModel(Id = 6, Time = "06:28", Title = "Adding Materials"),
+            )
         )
     )
 }

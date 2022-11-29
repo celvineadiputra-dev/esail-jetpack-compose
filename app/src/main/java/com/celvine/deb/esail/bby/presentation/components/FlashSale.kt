@@ -16,10 +16,11 @@ import com.celvine.deb.esail.bby.data.model.CourseModel
 
 @Composable
 fun FlashSale(
+    modifier: Modifier = Modifier,
     navController: NavController,
     courses: List<CourseModel>
 ) {
-    Column {
+    Column(modifier = modifier) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,

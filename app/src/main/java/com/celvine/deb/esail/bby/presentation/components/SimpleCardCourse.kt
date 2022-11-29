@@ -28,9 +28,9 @@ import com.celvine.deb.esail.bby.ui.components.Star
 
 
 @Composable
-fun SimpleCardCourse(item: CourseModel, navController: NavController) {
+fun SimpleCardCourse(modifier: Modifier = Modifier,item: CourseModel, navController: NavController) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable {
                 navController.navigate(Routes.Detail.createRoute(item.id))

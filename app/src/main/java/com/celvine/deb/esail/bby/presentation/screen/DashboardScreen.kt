@@ -27,10 +27,9 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
             BottomNavigationBar(navController)
         }
     }) { paddingValues ->
-        val padding = paddingValues
         NavHost(navController = navController, startDestination = Routes.Home.routes) {
             composable(Routes.Home.routes) {
-                HomeScreen(navController = navController)
+                HomeScreen(navController = navController, paddingValues = paddingValues)
             }
             composable(Routes.Search.routes) {
                 SearchScreen(navController = navController)
@@ -39,7 +38,7 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
                 ProfileScreen(navController = navController)
             }
             composable(Routes.Wishlist.routes) {
-                WishlistScreen(navController = navController)
+                WishlistScreen(navController = navController, paddingValues = paddingValues)
             }
             composable(Routes.Cart.routes) {
                 CartScreen(navController = navController)

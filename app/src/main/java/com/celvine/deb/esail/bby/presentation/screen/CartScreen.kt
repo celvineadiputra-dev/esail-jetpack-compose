@@ -69,13 +69,13 @@ fun CartScreen(
                                         end = 16.dp,
                                         bottom = paddingValues.calculateBottomPadding()
                                     ),
-                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
-                                item {
+                                items(uiState.data.cartList.size, key = { it }) {
                                     CartListItem(
                                         detailViewModel = detailViewModel,
                                         navController = navController,
-                                        list = uiState.data.cartList
+                                        cart = uiState.data.cartList[it]
                                     )
                                 }
                             }
@@ -92,13 +92,10 @@ fun CartScreen(
 fun CartListItem(
     detailViewModel: DetailViewModel,
     navController: NavController,
-    list: List<CartModel>
+    cart: CartModel
 ) {
-    list.forEach {
-        val item: CourseModel = detailViewModel.getDataById(it.Id)
-        SimpleCardCourse(item = item, navController = navController)
-        Spacer(modifier = Modifier.height(10.dp))
-    }
+    val item: CourseModel = detailViewModel.getDataById(cart.Id)
+    SimpleCardCourse(item = item, navController = navController)
 }
 
 @Composable

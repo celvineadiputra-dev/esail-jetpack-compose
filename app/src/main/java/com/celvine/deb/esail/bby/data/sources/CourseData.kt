@@ -243,5 +243,66 @@ object CourseData {
             totalTime = "13h",
             totalVideo = 101
         ),
+        CourseModel(
+            id = 8,
+            title = "Photoshop Masterclass for Graphic Designers",
+            sortDesc = "Do you want to translate your imagination into a reality? Anything is possible with Photoshop. It allows you to create any ideas into a beautiful piece of art or creative design",
+            desc = "Do you want to translate your imagination into a reality? Anything is possible with Photoshop. It allows you to create any ideas into a beautiful piece of art or creative design. In this class, I show you how to use Adobe Photoshop like a pro sharing all my shortcuts, principles and techniques I use on a regular basis.\n" +
+                    "\n" +
+                    "\n" +
+                    "You’ll learn:\n" +
+                    "\n" +
+                    "Masks, Adjustments, Layers\n" +
+                    "My personal time-saving shortcuts\n" +
+                    "Image manipulation and realism\n" +
+                    "Creating realistic mock ups and images\n" +
+                    "How to add extra details to any design\n" +
+                    "How to use the filter gallery\n" +
+                    "Sharpening and colour grading\n" +
+                    "Improving your mock up presentation\n" +
+                    "Creating your own textures\n" +
+                    "Neural Filters and Filter Gallery",
+            isFree = true,
+            price = 0,
+            banner = "https://celvine.sirv.com/esail/1740903%20(Medium).jpg",
+            rating = "4.4 (801)",
+            Captain = CaptainModel(
+                Name = "Jeremy Mura",
+                Job = "Graphic & Brand Designer, Youtuber",
+                Image = "https://static.skillshare.com/uploads/users/9601283/user-image-medium.jpg?96701960"
+            ),
+            category = "Design",
+            isPopular = true,
+            isFlashSale = false,
+            totalTime = "1h 22m",
+            totalVideo = 11
+        ),
+        CourseModel(
+            id = 9,
+            title = "The Complete React Basics 101 Course for Beginners",
+            sortDesc = "I will teach all the important aspects to getting started with React in detail and I promise you that you will learn something whether you're an absolute beginner or an advanced React developer!",
+            desc = "The React Basics 101 Class will help you get started with React.\n" +
+                    "\n" +
+                    "I will teach all the important aspects to getting started with React in detail and I promise you that you will learn something whether you're an absolute beginner or an advanced React developer!\n" +
+                    "\n" +
+                    "I will guide you on a path to make amazing clones such as the Facebook, Snapchat, WhatsApp clones just like the ones on my YouTube channel (Sonny Sangha)\n" +
+                    "\n" +
+                    "These clones can greatly spice up your digital portfolio which will in turn help you land your dream job as a React Developer!\n" +
+                    "\n",
+            isFree = false,
+            price = 75000,
+            banner = "https://celvine.sirv.com/esail/React%20Native%20vs%20Reactjs.png",
+            rating = "4.7 (3020)",
+            Captain = CaptainModel(
+                Name = "Sonny Sangha",
+                Job = "React Full Stack Dev + YouTuber",
+                Image = "https://static.skillshare.com/uploads/users/576524223/user-image-medium.jpg?724172393"
+            ),
+            category = "Development",
+            isPopular = false,
+            isFlashSale = true,
+            totalTime = "3h 20m",
+            totalVideo = 14
+        ),
     )
 }

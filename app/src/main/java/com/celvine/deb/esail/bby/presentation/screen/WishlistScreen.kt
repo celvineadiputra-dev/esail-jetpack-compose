@@ -1,10 +1,7 @@
 package com.celvine.deb.esail.bby.presentation.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -27,6 +24,7 @@ import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
 fun WishlistScreen(
+    paddingValues: PaddingValues,
     navController: NavController,
     viewModel: WishlistViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelWishListFactory(
@@ -53,16 +51,20 @@ fun WishlistScreen(
                         LazyColumn(
                             modifier = Modifier
                                 .background(color = White2)
-                                .padding(horizontal = 16.dp, vertical = 10.dp)
+                                .padding(
+                                    start = 16.dp,
+                                    end = 16.dp,
+                                    top = 16.dp,
+                                    bottom = paddingValues.calculateBottomPadding()
+                                ),
+                            verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            item {
+                            items(uiState.data.wishlist.size, key = { it }) {
                                 WishListItem(
                                     detailViewModel = detailViewModel,
                                     navController = navController,
-                                    list = uiState.data.wishlist
+                                    wishlist = uiState.data.wishlist[it]
                                 )
-
-                                Spacer(modifier = Modifier.height(90.dp))
                             }
                         }
                     }
@@ -80,11 +82,8 @@ fun WishlistScreen(
 fun WishListItem(
     detailViewModel: DetailViewModel,
     navController: NavController,
-    list: List<WishlistModel>
+    wishlist: WishlistModel
 ) {
-    list.forEach {
-        val item: CourseModel = detailViewModel.getDataById(it.Id)
-        SimpleCardCourse(item = item, navController = navController)
-        Spacer(modifier = Modifier.height(10.dp))
-    }
+    val item: CourseModel = detailViewModel.getDataById(wishlist.Id)
+    SimpleCardCourse(item = item, navController = navController)
 }

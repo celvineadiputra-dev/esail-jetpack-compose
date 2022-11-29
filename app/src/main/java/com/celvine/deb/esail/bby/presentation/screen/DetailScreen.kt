@@ -28,6 +28,7 @@ import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.viewmodels.*
 import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.*
+import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
 fun DetailScreen(
@@ -66,7 +67,7 @@ fun DetailScreen(
                         detailViewModel.getById(id = id)
                     }
                     is UiState.Success -> {
-                        BannerCourse(image = uiState.data.banner)
+                        BannerCourse(navController = navController, image = uiState.data.banner)
                         DetailCourse(
                             wishListViewModel = wishListViewModel,
                             cartViewModel = cartViewModel,
@@ -85,7 +86,7 @@ fun DetailScreen(
 }
 
 @Composable
-fun BannerCourse(image: String) {
+fun BannerCourse(navController: NavController, image: String) {
     Box {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -106,26 +107,30 @@ fun BannerCourse(image: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.popBackStack()
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = White, contentColor = Dark)
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         painter = painterResource(id = R.drawable.arrow_back),
-                        contentDescription = "cx"
+                        contentDescription = "back"
                     )
                     Text(text = "Back")
                 }
             }
 
             FilledIconButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Routes.Cart.routes)
+                },
                 colors = IconButtonDefaults.filledIconButtonColors(containerColor = White)
             ) {
                 Icon(
                     modifier = Modifier.width(24.dp),
-                    painter = painterResource(id = R.drawable.seedling_icon),
-                    contentDescription = "Add to Wishlist"
+                    painter = painterResource(id = R.drawable.cart_shopping),
+                    contentDescription = "Cart Page"
                 )
             }
         }
@@ -200,8 +205,6 @@ fun DetailCourse(
             }
             Spacer(modifier = Modifier.height(12.dp))
             ExpandedText(text = detail.desc)
-            Spacer(modifier = Modifier.height(12.dp))
-            PrimaryButton(modifier = Modifier.height(55.dp), text = "Enroll Now", onClick = {})
             Spacer(modifier = Modifier.height(6.dp))
             Row(modifier = Modifier.fillMaxWidth()) {
                 PrimaryOutlineButton(

@@ -349,6 +349,53 @@ object CourseContentData {
                 SectionModel(Id = 5, Time = "09.38", Title = "Pillar Details"),
                 SectionModel(Id = 6, Time = "06:28", Title = "Adding Materials"),
             )
-        )
+        ),
+        ContentModel(
+            Id = 20,
+            CourseId = 8,
+            Title = "Introduction Class",
+            TotalTime = "2m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "01:00", Title = "Introduction Class"),
+                SectionModel(Id = 2, Time = "01:00", Title = "What's Photoshop"),
+            )
+        ),
+        ContentModel(
+            Id = 21,
+            CourseId = 8,
+            Title = "Basic Photoshop",
+            TotalTime = "1h 20m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "10:19", Title = "Masking, Clipping, and tracing"),
+                SectionModel(Id = 2, Time = "13:13", Title = "Colour grading and sharpening"),
+                SectionModel(Id = 3, Time = "14:32", Title = "Brand mockup and manipulation"),
+                SectionModel(Id = 4, Time = "08:57", Title = "Adding logo designs to mockups"),
+                SectionModel(Id = 5, Time = "09:58", Title = "Adding details into a poster design"),
+                SectionModel(Id = 6, Time = "03:46", Title = "Adding depth to brand mockups"),
+            )
+        ),
+        ContentModel(
+            Id = 22,
+            CourseId = 9,
+            Title = "Introduction Class",
+            TotalTime = "19m 41d",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "01:00", Title = "Introduction React"),
+            )
+        ),
+        ContentModel(
+            Id = 23,
+            CourseId = 9,
+            Title = "Inrtoduction React Js",
+            TotalTime = "19m 41d",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "10:10", Title = "Component based design"),
+                SectionModel(Id = 2, Time = "09:10", Title = "Create react app"),
+                SectionModel(Id = 3, Time = "08:00", Title = "vs code extensions"),
+                SectionModel(Id = 4, Time = "12:23", Title = "What is JSX"),
+                SectionModel(Id = 5, Time = "05:31", Title = "BEM Naming Convension"),
+                SectionModel(Id = 6, Time = "09:56", Title = "Class based vs functional based components"),
+            )
+        ),
     )
 }

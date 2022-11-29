@@ -18,10 +18,7 @@ import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CartModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
-import com.celvine.deb.esail.bby.data.viewmodels.CartViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.DetailViewModel
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelCartListFactory
-import com.celvine.deb.esail.bby.data.viewmodels.ViewModelDetailFactory
+import com.celvine.deb.esail.bby.data.viewmodels.*
 import com.celvine.deb.esail.bby.di.Injection
 import com.celvine.deb.esail.bby.presentation.components.PrimaryButton
 import com.celvine.deb.esail.bby.presentation.components.SimpleCardCourse
@@ -42,6 +39,12 @@ fun CartScreen(
             Injection.provideDetailRepository()
         )
     ),
+    myCourseViewModel: MyCoursesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = ViewModelMyCoursesFactory(
+            Injection.provideMyCoursesRepository(),
+            Injection.provideCartRepository()
+        )
+    ),
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -50,7 +53,13 @@ fun CartScreen(
                 navController.navigate(Routes.Search.routes)
             })
         },
-        bottomBar = { BottomCart(viewModel = viewModel) },
+        bottomBar = {
+            BottomCart(
+                navController = navController,
+                viewModel = viewModel,
+                myCourseViewModel = myCourseViewModel
+            )
+        },
         content = { paddingValues: PaddingValues ->
             viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
@@ -99,7 +108,11 @@ fun CartListItem(
 }
 
 @Composable
-fun BottomCart(viewModel: CartViewModel) {
+fun BottomCart(
+    navController: NavController,
+    viewModel: CartViewModel,
+    myCourseViewModel: MyCoursesViewModel
+) {
     viewModel.getCheckout()
     val checkout = viewModel.checkout.collectAsState()
     Column(
@@ -193,6 +206,13 @@ fun BottomCart(viewModel: CartViewModel) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        PrimaryButton(text = "Checkout Order", onClick = {})
+        PrimaryButton(text = "Checkout Order", onClick = {
+            myCourseViewModel.enroll(id = 1)
+            navController.navigate(Routes.MyCourse.routes) {
+                popUpTo(Routes.Home.routes) {
+                    inclusive = true
+                }
+            }
+        })
     }
 }

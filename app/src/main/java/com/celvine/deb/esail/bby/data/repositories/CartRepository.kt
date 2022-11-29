@@ -62,6 +62,14 @@ class CartRepository {
         return result >= 0
     }
 
+    fun removeAll(): Boolean {
+        cartList.clear()
+
+        setCheckout(subTotal = 0, discount = 0, total = 0)
+
+        return true
+    }
+
     companion object {
         @Volatile
         private var instance: CartRepository? = null

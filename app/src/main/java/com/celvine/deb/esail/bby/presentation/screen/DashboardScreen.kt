@@ -43,6 +43,9 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
             composable(Routes.Cart.routes) {
                 CartScreen(navController = navController)
             }
+            composable(Routes.MyCourse.routes) {
+                MyCoursesScreen(navController = navController)
+            }
             composable(
                 Routes.Detail.routes,
                 arguments = listOf(navArgument("id") { type = NavType.IntType })

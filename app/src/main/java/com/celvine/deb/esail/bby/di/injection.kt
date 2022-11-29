@@ -22,4 +22,8 @@ object Injection {
     fun provideCartRepository(): CartRepository {
         return CartRepository.getInstance()
     }
+
+    fun provideMyCoursesRepository(): MyCoursesRepository {
+        return MyCoursesRepository.getInstance()
+    }
 }

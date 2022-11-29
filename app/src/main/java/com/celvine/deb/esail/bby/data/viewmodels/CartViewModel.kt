@@ -59,4 +59,8 @@ class CartViewModel(private val repository: CartRepository) : ViewModel() {
             }
         }
     }
+
+    fun removeAll() {
+        repository.removeAll()
+    }
 }

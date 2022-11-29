@@ -44,7 +44,7 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
                 CartScreen(navController = navController)
             }
             composable(Routes.MyCourse.routes) {
-                MyCoursesScreen(navController = navController)
+                MyCoursesScreen(navController = navController, paddingValues = paddingValues)
             }
             composable(
                 Routes.Detail.routes,

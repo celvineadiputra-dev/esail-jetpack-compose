@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -49,9 +50,12 @@ fun CartScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopBar(title = "Cart", icon = R.drawable.search_icon, onClick = {
-                navController.navigate(Routes.Search.routes)
-            })
+            TopBar(
+                title = stringResource(id = R.string.cart),
+                icon = R.drawable.search_icon,
+                onClick = {
+                    navController.navigate(Routes.Search.routes)
+                })
         },
         bottomBar = {
             BottomCart(
@@ -91,7 +95,9 @@ fun CartScreen(
                             Spacer(modifier = Modifier.height(90.dp))
                         }
                     }
-                    is UiState.Error -> {}
+                    is UiState.Error -> {
+                        Text(text = stringResource(id = R.string.error))
+                    }
                 }
             }
         })
@@ -128,7 +134,7 @@ fun BottomCart(
         ) {
             Column(modifier = Modifier.padding(10.dp)) {
                 Text(
-                    text = "Price Detail",
+                    text = stringResource(id = R.string.price_detail),
                     style = MaterialTheme.typography.labelMedium.copy(
                         color = Dark,
                         fontWeight = FontWeight.SemiBold
@@ -144,7 +150,7 @@ fun BottomCart(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Sub Total",
+                            text = stringResource(id = R.string.sub_total),
                             style = MaterialTheme.typography.labelMedium.copy(
                                 color = SoftGray2,
                                 fontWeight = FontWeight.SemiBold
@@ -165,7 +171,7 @@ fun BottomCart(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Discount",
+                            text = stringResource(id = R.string.discount),
                             style = MaterialTheme.typography.labelMedium.copy(
                                 color = SoftGray2,
                                 fontWeight = FontWeight.SemiBold
@@ -186,7 +192,7 @@ fun BottomCart(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Total",
+                            text = stringResource(id = R.string.total),
                             style = MaterialTheme.typography.labelMedium.copy(
                                 color = SoftGray2,
                                 fontWeight = FontWeight.SemiBold
@@ -206,7 +212,7 @@ fun BottomCart(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        PrimaryButton(text = "Checkout Order", onClick = {
+        PrimaryButton(text = stringResource(id = R.string.checkout), onClick = {
             myCourseViewModel.enroll(id = 1)
             navController.navigate(Routes.MyCourse.routes) {
                 popUpTo(Routes.Home.routes) {

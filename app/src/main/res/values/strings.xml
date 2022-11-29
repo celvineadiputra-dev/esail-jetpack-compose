@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">ESail</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter">Enter your %1$s</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="user_name">User Name</string>
+    <string name="in_dev">Feature in development</string>
+    <string name="cart">Cart</string>
+    <string name="price_detail">Price Detail</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="discount">Discount</string>
+    <string name="total">total</string>
+    <string name="checkout">Checkout</string>
+    <string name="image_profile">Image Profile</string>
+    <string name="back">Back</string>
+    <string name="star">Star</string>
+    <string name="videos">Videos</string>
+    <string name="remove">Remove</string>
+    <string name="add_to">Add to %1$s</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="captain">Captain</string>
+    <string name="course_content">Course Content</string>
+    <string name="my_course">My Courses</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="cart_icon">Cart Icon</string>
+    <string name="error">Something wrong</string>
+    <string name="placeholder_search">Jetpack Compose Beginner</string>
 </resources>

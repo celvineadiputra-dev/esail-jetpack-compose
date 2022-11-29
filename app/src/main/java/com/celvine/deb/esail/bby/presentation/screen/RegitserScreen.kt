@@ -9,10 +9,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.DodgerBlue
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.presentation.components.AuthSocial
@@ -31,38 +33,47 @@ fun RegisterScreen(navController: NavController) {
     ) {
         WelcomeTextx()
         Spacer(modifier = Modifier.height(20.dp))
-        Text(text = "User Name", style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp))
-        Spacer(modifier = Modifier.height(3.dp))
-        PrimaryTextField(placeholder = "User Name")
-
-        Spacer(modifier = Modifier.height(15.dp))
-        Text(text = "Email", style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp))
-        Spacer(modifier = Modifier.height(3.dp))
-        PrimaryTextField(placeholder = "Email")
-
-        Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = "Phone Number",
+            text = stringResource(id = R.string.user_name),
             style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
         )
         Spacer(modifier = Modifier.height(3.dp))
-        PrimaryTextField(placeholder = "Phone Number")
-
-        Spacer(modifier = Modifier.height(15.dp))
-        Text(text = "Password", style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp))
-        Spacer(modifier = Modifier.height(3.dp))
-        PasswordTextField(placeholder = "Password")
+        PrimaryTextField(placeholder = stringResource(id = R.string.user_name))
 
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = "Confirm Password",
+            text = stringResource(id = R.string.email),
             style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
         )
         Spacer(modifier = Modifier.height(3.dp))
-        PasswordTextField(placeholder = "Confirm Password")
+        PrimaryTextField(placeholder = stringResource(id = R.string.email))
+
+        Spacer(modifier = Modifier.height(15.dp))
+        Text(
+            text = stringResource(id = R.string.phone_number),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+        )
+        Spacer(modifier = Modifier.height(3.dp))
+        PrimaryTextField(placeholder = stringResource(id = R.string.phone_number))
+
+        Spacer(modifier = Modifier.height(15.dp))
+        Text(
+            text = stringResource(id = R.string.password),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+        )
+        Spacer(modifier = Modifier.height(3.dp))
+        PasswordTextField(placeholder = stringResource(id = R.string.password))
+
+        Spacer(modifier = Modifier.height(15.dp))
+        Text(
+            text = stringResource(id = R.string.confirm_password),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+        )
+        Spacer(modifier = Modifier.height(3.dp))
+        PasswordTextField(placeholder = stringResource(id = R.string.confirm_password))
 
         Spacer(modifier = Modifier.height(20.dp))
-        PrimaryButton(text = "Register", onClick = {})
+        PrimaryButton(text = stringResource(id = R.string.register), onClick = {})
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -87,7 +98,7 @@ fun RegisterScreen(navController: NavController) {
                 }
             }) {
                 Text(
-                    text = "Sign In",
+                    text = stringResource(id = R.string.sign_in),
                     style = MaterialTheme.typography.labelMedium.copy(
                         color = DodgerBlue,
                         fontWeight = FontWeight.Bold

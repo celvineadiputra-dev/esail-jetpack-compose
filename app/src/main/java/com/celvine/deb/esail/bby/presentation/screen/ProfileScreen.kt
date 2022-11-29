@@ -83,7 +83,7 @@ fun ItemMenuProfile(icon: Int, label: String) {
             .fillMaxWidth()
             .clickable {
                 Toast
-                    .makeText(context, "Feature in development", Toast.LENGTH_SHORT)
+                    .makeText(context, R.string.in_dev, Toast.LENGTH_SHORT)
                     .show()
             }
             .padding(horizontal = 20.dp, vertical = 15.dp),

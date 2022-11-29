@@ -394,7 +394,11 @@ object CourseContentData {
                 SectionModel(Id = 3, Time = "08:00", Title = "vs code extensions"),
                 SectionModel(Id = 4, Time = "12:23", Title = "What is JSX"),
                 SectionModel(Id = 5, Time = "05:31", Title = "BEM Naming Convension"),
-                SectionModel(Id = 6, Time = "09:56", Title = "Class based vs functional based components"),
+                SectionModel(
+                    Id = 6,
+                    Time = "09:56",
+                    Title = "Class based vs functional based components"
+                ),
             )
         ),
         ContentModel(

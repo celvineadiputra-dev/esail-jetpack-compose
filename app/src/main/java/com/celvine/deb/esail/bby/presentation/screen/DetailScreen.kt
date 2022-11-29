@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,13 +23,17 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.Capitalize
+import com.celvine.deb.esail.bby.common.FormatPrice
 import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CaptainModel
 import com.celvine.deb.esail.bby.data.model.CourseModel
 import com.celvine.deb.esail.bby.data.viewmodels.*
 import com.celvine.deb.esail.bby.di.Injection
-import com.celvine.deb.esail.bby.presentation.components.*
+import com.celvine.deb.esail.bby.presentation.components.Accordion
+import com.celvine.deb.esail.bby.presentation.components.ExpandedText
+import com.celvine.deb.esail.bby.presentation.components.Price
+import com.celvine.deb.esail.bby.presentation.components.PrimaryOutlineButton
 import com.celvine.deb.esail.bby.route.Routes
 
 @Composable
@@ -78,7 +83,7 @@ fun DetailScreen(
                         Content(id = uiState.data.id, contentViewModel = contentViewModel)
                     }
                     is UiState.Error -> {
-
+                        Text(text = stringResource(id = R.string.error))
                     }
                 }
             }
@@ -93,7 +98,7 @@ fun BannerCourse(navController: NavController, image: String) {
             model = ImageRequest.Builder(LocalContext.current)
                 .data(image)
                 .crossfade(true).build(),
-            contentDescription = "Image Profile",
+            contentDescription = stringResource(id = R.string.image_profile),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
@@ -116,9 +121,9 @@ fun BannerCourse(navController: NavController, image: String) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         painter = painterResource(id = R.drawable.arrow_back),
-                        contentDescription = "back"
+                        contentDescription = stringResource(id = R.string.back)
                     )
-                    Text(text = "Back")
+                    Text(text = stringResource(id = R.string.back))
                 }
             }
 
@@ -131,7 +136,7 @@ fun BannerCourse(navController: NavController, image: String) {
                 Icon(
                     modifier = Modifier.width(18.dp),
                     painter = painterResource(id = R.drawable.cart_shopping),
-                    contentDescription = "Cart Page"
+                    contentDescription = stringResource(id = R.string.cart)
                 )
             }
         }
@@ -170,7 +175,8 @@ fun DetailCourse(
                             .width(10.dp)
                             .height(10.dp),
                         painter = painterResource(id = R.drawable.star_icon),
-                        contentDescription = "Star", tint = MaximumYellowRed
+                        contentDescription = stringResource(id = R.string.star),
+                        tint = MaximumYellowRed
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(
@@ -198,11 +204,14 @@ fun DetailCourse(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row {
-                    Info(label = "${detail.totalVideo} Videos", icon = R.drawable.play)
+                    Info(
+                        label = "${detail.totalVideo} ${stringResource(id = R.string.videos)}",
+                        icon = R.drawable.play
+                    )
                     Spacer(modifier = Modifier.width(10.dp))
                     Info(label = detail.totalTime, icon = R.drawable.timer)
                 }
-                Price(isFree = false, price = "132K")
+                Price(isFree = detail.isFree, price = FormatPrice(detail.price))
             }
             Spacer(modifier = Modifier.height(12.dp))
             ExpandedText(text = detail.desc)
@@ -210,7 +219,9 @@ fun DetailCourse(
             Row(modifier = Modifier.fillMaxWidth()) {
                 PrimaryOutlineButton(
                     modifier = Modifier.weight(1f),
-                    label = if (isCartList) "Remove" else "Add to cart",
+                    label = if (isCartList) stringResource(id = R.string.remove) else stringResource(
+                        id = R.string.add_to, stringResource(id = R.string.cart)
+                    ),
                     onClick = {
                         if (isCartList) {
                             cartViewModel.removeFromCartList(detail.id, price = detail.price)
@@ -221,7 +232,9 @@ fun DetailCourse(
                 )
                 Spacer(modifier = Modifier.width(5.dp))
                 PrimaryOutlineButton(modifier = Modifier.weight(1f),
-                    label = if (isWishlist) "Remove" else "Add to wishlist",
+                    label = if (isWishlist) stringResource(id = R.string.remove) else stringResource(
+                        id = R.string.add_to, stringResource(id = R.string.wishlist)
+                    ),
                     onClick = {
                         if (isWishlist) {
                             wishListViewModel.removeFromWishlist(detail.id)
@@ -243,7 +256,7 @@ fun Info(label: String, icon: Int) {
         Icon(
             modifier = Modifier.width(12.dp),
             painter = painterResource(id = icon),
-            contentDescription = "X"
+            contentDescription = "icon"
         )
         Spacer(modifier = Modifier.width(5.dp))
         Text(
@@ -266,7 +279,7 @@ fun Captain(captain: CaptainModel) {
             .padding(horizontal = 20.dp)
     ) {
         Text(
-            text = "Captain",
+            text = stringResource(id = R.string.captain),
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
         )
         Spacer(modifier = Modifier.height(5.dp))
@@ -281,7 +294,7 @@ fun Captain(captain: CaptainModel) {
                         .data(captain.Image)
                         .crossfade(true)
                         .build(),
-                    contentDescription = "Image Profile",
+                    contentDescription = stringResource(id = R.string.image_profile),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .clip(CircleShape)
@@ -311,7 +324,7 @@ fun Captain(captain: CaptainModel) {
                 modifier = Modifier.width(24.dp),
                 painter = painterResource(id = R.drawable.comments),
                 contentDescription = "Say hay to captain",
-                tint = HonoluluBlue
+                tint = SoftGray2
             )
         }
     }
@@ -332,7 +345,7 @@ fun Content(id: Int, contentViewModel: ContentViewModel) {
                         .padding(horizontal = 20.dp, vertical = 10.dp)
                 ) {
                     Text(
-                        text = "Course Content",
+                        text = stringResource(id = R.string.course_content),
                         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
                     )
                     uiState.data.forEach { item ->

@@ -29,7 +29,11 @@ import com.celvine.deb.esail.bby.ui.components.Star
 
 
 @Composable
-fun SimpleCardCourse(modifier: Modifier = Modifier,item: CourseModel, navController: NavController) {
+fun SimpleCardCourse(
+    modifier: Modifier = Modifier,
+    item: CourseModel,
+    navController: NavController
+) {
     Card(
         modifier = modifier
             .fillMaxWidth()

@@ -13,15 +13,6 @@
         android:theme="@style/Theme.ESail.SplashScreen"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.ESail.SplashScreen">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

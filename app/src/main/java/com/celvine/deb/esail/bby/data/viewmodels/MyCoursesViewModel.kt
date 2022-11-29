@@ -1,6 +1,5 @@
 package com.celvine.deb.esail.bby.data.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.celvine.deb.esail.bby.common.MyCoursesState

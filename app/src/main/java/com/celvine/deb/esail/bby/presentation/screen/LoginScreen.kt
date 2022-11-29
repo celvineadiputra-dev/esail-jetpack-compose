@@ -9,12 +9,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.celvine.deb.esail.bby.R
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.presentation.components.AuthSocial
 import com.celvine.deb.esail.bby.presentation.components.PasswordTextField
@@ -40,19 +42,32 @@ fun LoginScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = if (authType.value == "email") "Email" else "Phone Number",
+            text = if (authType.value == "email") stringResource(id = R.string.email) else stringResource(
+                id = R.string.phone_number
+            ),
             style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
         )
         Spacer(modifier = Modifier.height(3.dp))
         PrimaryTextField(
-            placeholder = if (authType.value == "email") "Enter your email address" else "Enter phone number",
+            placeholder = if (authType.value == "email") stringResource(
+                id = R.string.password, stringResource(
+                    id = R.string.email_address
+                )
+            ) else stringResource(
+                id = R.string.password, stringResource(
+                    id = R.string.phone_number
+                )
+            ),
             keyboardType = if (authType.value == "email") KeyboardType.Email else KeyboardType.Phone
         )
 
         Spacer(modifier = Modifier.height(15.dp))
-        Text(text = "Password", style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp))
+        Text(
+            text = stringResource(id = R.string.password),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp)
+        )
         Spacer(modifier = Modifier.height(3.dp))
-        PasswordTextField(placeholder = "Password")
+        PasswordTextField(placeholder = stringResource(id = R.string.password))
 
         Spacer(modifier = Modifier.height(5.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
@@ -60,7 +75,7 @@ fun LoginScreen(navController: NavController) {
                 onClick = {},
             ) {
                 Text(
-                    text = "Forgot Password",
+                    text = stringResource(id = R.string.forgot_password),
                     style = MaterialTheme.typography.bodySmall.copy(
                         fontSize = 15.sp,
                         color = SoftGray2
@@ -70,7 +85,7 @@ fun LoginScreen(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.height(5.dp))
-        PrimaryButton(text = "Login", onClick = {
+        PrimaryButton(text = stringResource(id = R.string.login), onClick = {
             navController.navigate(Routes.Dashboard.routes) {
                 popUpTo(Routes.Login.routes) {
                     inclusive = true
@@ -101,7 +116,7 @@ fun LoginScreen(navController: NavController) {
                 }
             }) {
                 Text(
-                    text = "Sign Up",
+                    text = stringResource(id = R.string.sign_up),
                     style = MaterialTheme.typography.bodySmall.copy(
                         color = DodgerBlue,
                         fontWeight = FontWeight.Bold
@@ -160,7 +175,7 @@ fun Tabby(authType: MutableState<String>) {
             TabbyCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f), label = "Email Address",
+                    .weight(1f), label = stringResource(id = R.string.email_address),
                 isActive = currentActive == 0,
                 index = 0,
                 setCurrentActive = ::setCurrentActive
@@ -169,7 +184,7 @@ fun Tabby(authType: MutableState<String>) {
             TabbyCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f), label = "Phone Number",
+                    .weight(1f), label = stringResource(id = R.string.phone_number),
                 isActive = currentActive == 1,
                 index = 1,
                 setCurrentActive = ::setCurrentActive

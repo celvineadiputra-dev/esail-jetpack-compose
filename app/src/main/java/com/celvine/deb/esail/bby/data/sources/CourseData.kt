@@ -304,5 +304,90 @@ object CourseData {
             totalTime = "3h 20m",
             totalVideo = 14
         ),
+        CourseModel(
+            id = 10,
+            title = "Adobe Illustrator CC Masterclass: Shortcuts & Workflow Tips",
+            sortDesc = "Adobe illustrator is the designer's bread and butter. What if you didn't go to design school? Is illustrator still for you? Is canva too slow and you can't do what you want it to do?",
+            desc = "Adobe illustrator is the designer's bread and butter. What if you didn't go to design school?\n" +
+                    "\n" +
+                    "Is illustrator still for you? Is canva too slow and you can't do what you want it to do?\n" +
+                    "\n" +
+                    "You can learn illustrator no matter what level you are at, it's just a tool!\n" +
+                    "\n" +
+                    "Just like any new tool you just have to learn the basics!\n" +
+                    "\n" +
+                    "In this class, I'm going to show you all my tips, tricks and shortcuts for an efficient workflow.\n" +
+                    "\n" +
+                    "You will learn the ins and outs of Illustrator from my 7 years experience and be\n" +
+                    "\n" +
+                    "a pro illustrator user in no-time! Oh and the dreaded pen tool I will help you master that too.\n" +
+                    "\n" +
+                    "You’ll learn: \n" +
+                    "\n" +
+                    "My personal shortcuts, hacks, Tips\n" +
+                    "How to create custom action scripts\n" +
+                    "How to save custom master swatches and libraries\n" +
+                    "Daily Shortcuts & workspace customisation\n" +
+                    "Typography shortcuts for super speed\n" +
+                    "My Top free and paid plugins I use regularly\n" +
+                    "How to use artboards faster\n" +
+                    "Utilizing targeted layers\n" +
+                    "How to export files the fast way\n" +
+                    "Global swatches and edits\n" +
+                    "+ Heaps More\n" +
+                    "In class is perfect for intermediate designers who want to step up up their game from the basic in adobe Illustrator. You will need Adobe illustrator CC to apply some of the recent effects.",
+            isFree = false,
+            price = 99000,
+            banner = "https://celvine.sirv.com/esail/wallpaper_illustration_art_ninja_city_4x.webp",
+            rating = "4.9 (6622)",
+            Captain = CaptainModel(
+                Name = "Jeremy Mura",
+                Job = "Graphic & Brand Designer, Youtuber",
+                Image = "https://static.skillshare.com/uploads/users/9601283/user-image-medium.jpg?96701960"
+            ),
+            category = "Design",
+            isPopular = true,
+            isFlashSale = true,
+            totalTime = "2h",
+            totalVideo = 14
+        ),
+        CourseModel(
+            id = 11,
+            title = "TypeScript for Professionals - 2022 Edition",
+            sortDesc = "Learn all about the TypeScript type system - taught by a Microsoft MVP",
+            desc = "I've been teaching TypeScript since 2012 (since launch). While teaching Juniors as well as Experts, I gathered a few tricks to make it an easy and smooth learning experience. I share those experiences with you. The objective is simple:\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "You can feel confident about what TypeScript is and offers\n" +
+                    "\n" +
+                    "You become a competent TypeScript / JavaScript developer\n" +
+                    "\n" +
+                    "A lot of effort has gone into this course to make sure you get all the knowledge you need, as quickly as possible.\n" +
+                    "\n" +
+                    "Why TypeScript\n" +
+                    "\n" +
+                    "I've been teaching and working with JavaScript for the past 10 years. TypeScript is hands down the best way to learn JavaScript. Give a beginner JavaScript developer a workflow with the TypeScript compiler and they can actually learn stuff themselves thanks to TypeScript's excellent 1000+ compiler errors that prevent common mistakes.\n" +
+                    "\n" +
+                    "Why this course\n" +
+                    "\n" +
+                    "I'm a Microsoft MVP (Most Valuable Professional) for TypeScript thanks to my teaching contributions in the form of books, various videos and answers on StackOverflow.\n" +
+                    "\n" +
+                    "This provides the best guidance possible for all the ways you can use TypeScript for your JavaScript projects to give you the most chances of success in your professional career. This course is based on my experience in that area and curated based on key workshop insights.",
+            isFree = false,
+            price = 129000,
+            banner = "https://celvine.sirv.com/esail/7990028.png",
+            rating = "4.5 (1500)",
+            Captain = CaptainModel(
+                Name = "Basarat Ali Syed",
+                Job = "That TypeScript Guy",
+                Image = "https://img-c.udemycdn.com/user/200_H/10181210_ec94_2.jpg"
+            ),
+            category = "Development",
+            isPopular = true,
+            isFlashSale = true,
+            totalTime = "3h 24m",
+            totalVideo = 73
+        ),
     )
 }

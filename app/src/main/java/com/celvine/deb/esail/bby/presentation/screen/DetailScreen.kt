@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.Capitalize
 import com.celvine.deb.esail.bby.common.UiState
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CaptainModel
@@ -128,7 +129,7 @@ fun BannerCourse(navController: NavController, image: String) {
                 colors = IconButtonDefaults.filledIconButtonColors(containerColor = White)
             ) {
                 Icon(
-                    modifier = Modifier.width(24.dp),
+                    modifier = Modifier.width(18.dp),
                     painter = painterResource(id = R.drawable.cart_shopping),
                     contentDescription = "Cart Page"
                 )
@@ -183,7 +184,7 @@ fun DetailCourse(
             }
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = detail.title,
+                text = Capitalize(detail.title),
                 style = MaterialTheme.typography.titleMedium.copy(
                     color = Dark,
                     fontSize = 13.sp,

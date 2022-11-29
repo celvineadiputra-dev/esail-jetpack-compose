@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.Capitalize
 import com.celvine.deb.esail.bby.common.FormatPrice
 import com.celvine.deb.esail.bby.common.theme.*
 import com.celvine.deb.esail.bby.data.model.CourseModel
@@ -107,7 +108,7 @@ fun CardCourse(item: CourseModel, onClick: (Int) -> Unit) {
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = item.title,
+                text = Capitalize(item.title),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
                 style = MaterialTheme.typography.bodyLarge.copy(

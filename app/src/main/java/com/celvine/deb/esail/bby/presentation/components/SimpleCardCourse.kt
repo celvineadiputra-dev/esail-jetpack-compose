@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.celvine.deb.esail.bby.common.Capitalize
 import com.celvine.deb.esail.bby.common.FormatPrice
 import com.celvine.deb.esail.bby.common.theme.White
 import com.celvine.deb.esail.bby.data.model.CourseModel
@@ -55,7 +56,7 @@ fun SimpleCardCourse(modifier: Modifier = Modifier,item: CourseModel, navControl
             Spacer(modifier = Modifier.width(15.dp))
             Column {
                 Text(
-                    text = item.title,
+                    text = Capitalize(item.title),
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                     style = MaterialTheme.typography.labelMedium.copy(

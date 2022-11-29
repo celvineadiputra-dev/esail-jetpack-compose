@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celvine.deb.esail.bby.R
+import com.celvine.deb.esail.bby.common.Capitalize
 import com.celvine.deb.esail.bby.common.theme.Dark
 import com.celvine.deb.esail.bby.common.theme.SoftGray2
 import com.celvine.deb.esail.bby.common.theme.White
@@ -27,7 +28,7 @@ fun Accordion(itemModel: ContentModel, onClickItem: () -> Unit, expanded: Boolea
     Card(colors = CardDefaults.cardColors(containerColor = White)) {
         Column {
             HeaderView(
-                questionText = itemModel.Title,
+                title = itemModel.Title,
                 onClickItem = onClickItem,
                 totalTime = itemModel.TotalTime
             )
@@ -37,7 +38,7 @@ fun Accordion(itemModel: ContentModel, onClickItem: () -> Unit, expanded: Boolea
 }
 
 @Composable
-fun HeaderView(questionText: String, onClickItem: () -> Unit, totalTime: String) {
+fun HeaderView(title: String, onClickItem: () -> Unit, totalTime: String) {
     Box(
         modifier = Modifier
             .clickable(
@@ -53,7 +54,7 @@ fun HeaderView(questionText: String, onClickItem: () -> Unit, totalTime: String)
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = questionText,
+                text = Capitalize(title),
                 color = Dark,
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontWeight = FontWeight.SemiBold,
@@ -74,7 +75,6 @@ fun HeaderView(questionText: String, onClickItem: () -> Unit, totalTime: String)
 
 @Composable
 fun ExpandableView(answerText: List<SectionModel>, isExpanded: Boolean) {
-    // Opening Animation
     val expandTransition = remember {
         expandVertically(
             expandFrom = Alignment.Top,
@@ -84,7 +84,6 @@ fun ExpandableView(answerText: List<SectionModel>, isExpanded: Boolean) {
         )
     }
 
-    // Closing Animation
     val collapseTransition = remember {
         shrinkVertically(
             shrinkTowards = Alignment.Top,
@@ -122,7 +121,7 @@ fun ExpandableView(answerText: List<SectionModel>, isExpanded: Boolean) {
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = item.Title,
+                            text = Capitalize(item.Title),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                             style = MaterialTheme.typography.labelSmall.copy(

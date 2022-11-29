@@ -23,7 +23,7 @@ class CartRepository {
 
 
         val subTotal = checkout[0].subTotal + price
-        val discount = checkout[0].discount + 2000
+        val discount = if (price > 0) checkout[0].discount + 2000 else 0
         val total = subTotal - discount
 
         setCheckout(subTotal = subTotal, discount = discount, total = total)
@@ -48,8 +48,8 @@ class CartRepository {
         cartList.removeAt(index)
 
         val subTotal = checkout[0].subTotal - price
-        val discount = checkout[0].discount - 2000
-        val total = checkout[0].total - (price + 2000)
+        val discount = if (price > 0) checkout[0].discount - 2000 else 0
+        val total = checkout[0].total - (price + if (price > 0) 2000 else 0)
 
         setCheckout(subTotal = subTotal, discount = discount, total = total)
 

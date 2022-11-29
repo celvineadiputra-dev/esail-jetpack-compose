@@ -386,7 +386,7 @@ object CourseContentData {
         ContentModel(
             Id = 23,
             CourseId = 9,
-            Title = "Inrtoduction React Js",
+            Title = "Introduction React Js",
             TotalTime = "19m 41d",
             Sections = listOf<SectionModel>(
                 SectionModel(Id = 1, Time = "10:10", Title = "Component based design"),
@@ -395,6 +395,63 @@ object CourseContentData {
                 SectionModel(Id = 4, Time = "12:23", Title = "What is JSX"),
                 SectionModel(Id = 5, Time = "05:31", Title = "BEM Naming Convension"),
                 SectionModel(Id = 6, Time = "09:56", Title = "Class based vs functional based components"),
+            )
+        ),
+        ContentModel(
+            Id = 23,
+            CourseId = 10,
+            Title = "Introduction Class",
+            TotalTime = "1m 41d",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "10:10", Title = "Component based design"),
+            )
+        ),
+        ContentModel(
+            Id = 24,
+            CourseId = 10,
+            Title = "Introduction Adobe Illustrator",
+            TotalTime = "1m 41d",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "03:03", Title = "What is adobe illustrator"),
+                SectionModel(Id = 2, Time = "13:41", Title = "My personal layout workspace"),
+                SectionModel(Id = 3, Time = "07:13", Title = "My top plugins"),
+                SectionModel(Id = 4, Time = "07:01", Title = "5 Commond shortcuts"),
+                SectionModel(Id = 5, Time = "02:21", Title = "Custom keyboard shortcuts"),
+            )
+        ),
+        ContentModel(
+            Id = 24,
+            CourseId = 11,
+            Title = "Basics",
+            TotalTime = "51m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "10:10", Title = "Setup and hello world"),
+                SectionModel(Id = 2, Time = "10:10", Title = "primitive types"),
+                SectionModel(Id = 3, Time = "10:10", Title = "Instance types"),
+                SectionModel(Id = 4, Time = "10:10", Title = "Array and Tupples"),
+            )
+        ),
+        ContentModel(
+            Id = 25,
+            CourseId = 11,
+            Title = "Intermediate",
+            TotalTime = "47m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "02:34", Title = "Lexical this"),
+                SectionModel(Id = 2, Time = "01:59", Title = "readonly modifier"),
+                SectionModel(Id = 3, Time = "02:57", Title = "Union Types"),
+                SectionModel(Id = 4, Time = "02:58", Title = "Type Narrowing"),
+            )
+        ),
+        ContentModel(
+            Id = 26,
+            CourseId = 11,
+            Title = "Advanced",
+            TotalTime = "36m",
+            Sections = listOf<SectionModel>(
+                SectionModel(Id = 1, Time = "01:25", Title = "implements keyword"),
+                SectionModel(Id = 2, Time = "02:31", Title = "Definite Assignment Assertion"),
+                SectionModel(Id = 3, Time = "02:02", Title = "User Defined Type Guards"),
             )
         ),
     )
